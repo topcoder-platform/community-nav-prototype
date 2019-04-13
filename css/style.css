@@ -119,7 +119,7 @@ body {
       font-weight: 700;
       font-size: 18px;
       line-height: 30px;
-      margin-left: 30px;
+      margin: 0 30px;
       position: relative; }
       .header-nav-ui .primary-nav .primary-level-1.more-menu {
         display: none; }
@@ -127,6 +127,8 @@ body {
         color: #43D7B0; }
         .header-nav-ui .primary-nav .primary-level-1.isOpen.isOpenSubmenu {
           color: #FFFFFF; }
+      .header-nav-ui .primary-nav .primary-level-1:nth-child(5) {
+        margin-right: 0; }
       .header-nav-ui .primary-nav .primary-level-1::before {
         content: "";
         position: absolute;
