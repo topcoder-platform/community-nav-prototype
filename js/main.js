@@ -235,7 +235,7 @@ document.addEventListener("DOMContentLoaded", function() {
         moreContentContainer.appendChild(moreContentItem);
       }
     }
-
+    removeSecondaryNavBackground();
     forceClickToSublevel1(previousSelectElementDesktop);
   }
   createAndMappingNavData();
@@ -453,9 +453,19 @@ document.addEventListener("DOMContentLoaded", function() {
   function subLevel1Click(event) {
     var target = event.target;
     if (!target || !hasClass(target, 'primary-level-1') || hasClass(target, 'login-btn') || hasClass(target, 'login-container')) return;
-
+    removeSecondaryNavBackground();
     forceClickToSublevel1(target);
     event.preventDefault();
+  }
+
+  function removeSecondaryNavBackground() {
+    addClass(secondaryNav, "hide");
+    addClass(arrowSelectedPrimaryAnimation, "hide");
+  }
+
+  function addSecondaryNavBackground() {
+    removeClass(secondaryNav, "hide");
+    removeClass(arrowSelectedPrimaryAnimation, "hide");
   }
 
   /**
@@ -953,6 +963,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // handle click event
   document.addEventListener('click', function (event) {
+    addSecondaryNavBackground();
     subLevel1Click(event);
     subLevel2Click(event);
     subLevel2MoreClick(event);
