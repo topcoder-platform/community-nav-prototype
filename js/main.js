@@ -400,6 +400,33 @@ document.addEventListener("DOMContentLoaded", function() {
     addClass(headerNavUi, "isLoggedIn");
     checkForShrinkMore();
   }
+
+  /**
+   * Switch to BUSSINESS or WORK 
+   * @param {click event} event 
+   */
+
+  function switchBussinessWork(event) {
+    var target = event.target;
+    var value = target.innerHTML
+    var bussinessItem = primaryNav.getElementsByClassName('primary-level-1')[1];
+    var bussinessItemVlue = bussinessItem.innerHTML;
+    var workItem = primaryNav.getElementsByClassName('primary-level-1')[2];
+    var workItemVlue = workItem.innerHTML;
+
+    function swtichValue(switchValue, switchItem) {
+      target.innerHTML = 'Switch to ' + switchValue;
+      forceClickToSublevel1(switchItem)
+    }
+
+    if (value === 'Switch to ' + bussinessItemVlue) {
+      swtichValue(workItemVlue, bussinessItem)
+
+    } else if (value === 'Switch to ' + workItemVlue) {
+      swtichValue(bussinessItemVlue, workItem)
+    }
+
+  }
   
   /**
    * move primary arrow to target
@@ -417,6 +444,13 @@ document.addEventListener("DOMContentLoaded", function() {
   function forceClickToSublevel1(target) {
     if (!target) {
       return;
+    }
+
+    // After change the navigation, the switch to text should toggle as well
+    if (target.innerHTML === 'BUSINESS') {
+      document.getElementsByClassName('switch-to-busniness')[0].innerHTML = 'Switch to WORK'
+    } else if (target.innerHTML === 'WORK') {
+      document.getElementsByClassName('switch-to-busniness')[0].innerHTML = 'Switch to BUSINESS'
     }
   
     polulateSecondaryNavMobile(target);
@@ -964,6 +998,7 @@ document.addEventListener("DOMContentLoaded", function() {
     secondaryLevel1MoreClick(event);
     userInfoContainerClick(event);
     moreButtonClick(event);
+    switchBussinessWork(event)
   }, false);
 });
 
