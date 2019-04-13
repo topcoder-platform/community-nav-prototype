@@ -116,10 +116,6 @@ body {
         }
       }
 
-      &:nth-child(5) {
-        margin-right: 0;
-      }
-
       &::before {
         content: "";
         position: absolute;
@@ -269,6 +265,10 @@ body {
         text-align: center;
 
         &:first-child {
+          margin-left: 0;
+        }
+
+        &:nth-child(2) {
           margin-left: 0;
         }
 
