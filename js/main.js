@@ -489,6 +489,12 @@ document.addEventListener("DOMContentLoaded", function() {
       previousLevel2ItemSelectElement = target;
     }
   }
+  
+  function closeMorePopup() {
+    iterateElement(document.querySelectorAll('.more-content-container'), function(moreContentItem) {
+      removeClass(moreContentItem.parentNode, 'isOpen');
+    });
+  }
 
   /**
    * event for sub level 2 more item click
@@ -497,7 +503,7 @@ document.addEventListener("DOMContentLoaded", function() {
   function subLevel2MoreClick(event) {
     var target = event.target;
     if (!target || !hasClass(target, 'primary-level-2-more')) return;
-    
+    closeMorePopup();
     forceClickToSubLevel2(target);
     event.preventDefault();
   }
@@ -574,7 +580,7 @@ document.addEventListener("DOMContentLoaded", function() {
   function secondaryLevel1MoreClick(event) {
     var target = event.target;
     if (!target || !hasClass(target, 'secondary-level-1-more')) return;
-    
+    closeMorePopup();
     forceSecondaryLevel1Click(target);
     event.preventDefault();
   }
