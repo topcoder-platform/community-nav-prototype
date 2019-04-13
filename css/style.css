@@ -164,6 +164,10 @@ body {
             width: 16px;
             height: 16px;
             margin-right: 5px; }
+          .header-nav-ui .primary-nav .primary-level-1.login-container > .user-info-container .avatar {
+            width: 30px;
+            height: 30px;
+            display: inline-block; }
         .header-nav-ui .primary-nav .primary-level-1.login-container .user-info-popup {
           position: absolute;
           right: 0;
