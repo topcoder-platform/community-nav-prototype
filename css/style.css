@@ -153,17 +153,28 @@ body {
             display: block; }
         .header-nav-ui .primary-nav .primary-level-1.login-container > .user-info-container {
           margin-left: 33px;
-          background: #555555;
-          border-radius: 15px; }
-          .header-nav-ui .primary-nav .primary-level-1.login-container > .user-info-container span {
+          border-radius: 15px;
+          background-color: #636363; }
+          .header-nav-ui .primary-nav .primary-level-1.login-container > .user-info-container .handle-container .handle {
+            display: none;
+            max-width: 0;
             font-size: 14px;
             font-weight: 700;
             line-height: 30px;
-            margin-left: 5px; }
-          .header-nav-ui .primary-nav .primary-level-1.login-container > .user-info-container .drowdown-icon {
+            margin-left: 5px;
+            transition: all 1s; }
+          .header-nav-ui .primary-nav .primary-level-1.login-container > .user-info-container .handle-container .drowdown-icon {
             width: 16px;
             height: 16px;
-            margin-right: 5px; }
+            margin: 0 5px; }
+            .header-nav-ui .primary-nav .primary-level-1.login-container > .user-info-container .handle-container .drowdown-icon .dropdown-icon {
+              transition: all 0.5s; }
+          .header-nav-ui .primary-nav .primary-level-1.login-container > .user-info-container:hover .handle-container .handle,
+          .header-nav-ui .primary-nav .primary-level-1.login-container > .user-info-container.isUserPopupOpen .handle-container .handle {
+            max-width: 400px;
+            display: block; }
+          .header-nav-ui .primary-nav .primary-level-1.login-container > .user-info-container.isUserPopupOpen .handle-container .dropdown-icon {
+            transform: rotate(180deg); }
         .header-nav-ui .primary-nav .primary-level-1.login-container .user-info-popup {
           position: absolute;
           right: 0;
