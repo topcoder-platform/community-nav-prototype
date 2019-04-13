@@ -164,6 +164,10 @@ body {
             width: 16px;
             height: 16px;
             margin-right: 5px; }
+          .header-nav-ui .primary-nav .primary-level-1.login-container > .user-info-container .avatar {
+            width: 30px;
+            height: 30px;
+            display: inline-block; }
         .header-nav-ui .primary-nav .primary-level-1.login-container .user-info-popup {
           position: absolute;
           right: 0;
@@ -359,6 +363,10 @@ body {
         background: #EF476F;
         border-radius: 6px;
         display: block; }
+      .header-nav-ui .mobile-nav .avatar-container .avatar {
+        width: 30px;
+        height: 30px;
+        display: inline-block; }
     .header-nav-ui .mobile-nav span {
       font-family: 'Roboto';
       font-weight: 700;
@@ -584,3 +592,6 @@ body {
     display: flex; }
   .header-nav-ui.isOpenSecondaryNavMobile .mobile-nav-sub-menu {
     display: none; } }
+
+.avatar {
+  border-radius: 100%; }
