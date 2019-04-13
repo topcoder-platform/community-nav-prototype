@@ -1,6 +1,7 @@
 /**
- * get offset of element
- * @param {dom element} el 
+ * Get offset of element
+ * @param {HTMLElement} el Dom element
+ * @return {{top: number, left: number}}
  */
 function offset(el) {
   if (!el) {
@@ -13,9 +14,10 @@ function offset(el) {
 }
 
 /**
- * remove class from element
- * @param {element} el 
- * @param {classname} classname 
+ * Remove class from element
+ * @param {HTMLElement | HTMLElement[]} el
+ * @param {string} classname
+ * @return {HTMLElement | HTMLElement[]}
  */
 function removeClass(el, classname) {
   return iterateElement(el, function(elIterate){
@@ -24,10 +26,11 @@ function removeClass(el, classname) {
 }
 
 /**
- * set attribute
- * @param {element} el 
- * @param {key} key 
- * @param {value} value 
+ * Set attribute
+ * @param {HTMLElement | HTMLElement[]} el 
+ * @param {string} key 
+ * @param {string} value 
+ * @return {HTMLElement | HTMLElement[]}
  */
 function setAttribute(el, key, value) {
   return iterateElement(el, function(elIterate){
@@ -36,9 +39,10 @@ function setAttribute(el, key, value) {
 }
 
 /**
- * set html
- * @param {element} el 
- * @param {html} html 
+ * Set html
+ * @param {HTMLElement | HTMLElement[]} el 
+ * @param {string} html
+ * @return {HTMLElement | HTMLElement[]}
  */
 function setHTML(el, html) {
   return iterateElement(el, function(elIterate){
@@ -47,9 +51,10 @@ function setHTML(el, html) {
 }
 
 /**
- * add class to element
- * @param {element} el 
- * @param {classname} classname 
+ * Add class to element
+ * @param {HTMLElement | HTMLElement[]} el 
+ * @param {string} classname 
+ * @return {HTMLElement | HTMLElement[]}
  */
 function addClass(el, classname) {
   return iterateElement(el, function(elIterate){
@@ -58,9 +63,10 @@ function addClass(el, classname) {
 }
 
 /**
- * toggle class to element
- * @param {element} el 
- * @param {classname} classname 
+ * Toggle class to element
+ * @param {HTMLElement | HTMLElement[]} el 
+ * @param {string} classname 
+ * @return {HTMLElement | HTMLElement[]}
  */
 function toggleClass(el, classname) {
   return iterateElement(el, function(elIterate){
@@ -69,9 +75,10 @@ function toggleClass(el, classname) {
 }
 
 /**
- * check if element has class
- * @param {element} el 
- * @param {classname} classname 
+ * Check if element has class
+ * @param {HTMLElement} el 
+ * @param {string} classname 
+ * @return {boolean}
  */
 function hasClass(el, classname) {
   var hasClass = false;
@@ -82,9 +89,11 @@ function hasClass(el, classname) {
 }
 
 /**
- * iterate all element
- * @param {element} el 
+ * Iterate all elements
+ * 
+ * @param {HTMLElement | HTMLElement[]} el
  * @param {callback} cb 
+ * @return {HTMLElement | HTMLElement[]}
  */
 function iterateElement(el, cb) {
   if (!el) {
@@ -107,8 +116,9 @@ function iterateElement(el, cb) {
 }
 
 /**
- * get list closest child of the element
- * @param {element} el 
+ * Get list closest child of the element
+ * @param {HTMLElement} el 
+ * @return {HTMLElement[]}
  */
 function getTheClosestChild(el) {
   var elements = [];
@@ -122,9 +132,10 @@ function getTheClosestChild(el) {
 }
 
 /**
- * get distance between 2 elements
- * @param {element 1} el1 
- * @param {element 2} el2 
+ * Get distance between 2 elements
+ * @param {HTMLElement} el1 
+ * @param {HTMLElement} el2 
+ * @return {number} The distance
  */
 function getDistance(el1, el2) {
   var el1Offset = offset(el1);
@@ -140,8 +151,8 @@ function getDistance(el1, el2) {
 }
 
 /**
- * remove element
- * @param {element} el 
+ * Remove element
+ * @param {HTMLElement | HTMLElement[]} el 
  */
 function removeItem(el) {
   return iterateElement(el, function(elIterate){
@@ -149,7 +160,11 @@ function removeItem(el) {
   });
 }
 
-// Where el is the DOM element you'd like to test for visibility
+/**
+ * Where el is the DOM element you'd like to test for visibility
+ * @param {HTMLElement} el
+ * @return {boolean}
+ */
 function isHidden(el) {
   return (el.offsetParent === null)
 }
@@ -236,7 +251,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   /**
    * Populate secondary memu items
-   * @param {selected element} target 
+   * @param {HTMLElement} target 
    */
   function populateSecondaryNavMobile(target) {
     var indexLevel1 = target.getAttribute('indexLevel1');
@@ -262,7 +277,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
   /**
    * populate the secondary menu item base on = selected menu level 2 item
-   * @param {selected item level 2} target 
+   * @param {HTMLElement} target Selected menu level 2 item
+   * @param {HTMLElement} directTarget if target doesn't exist, will populate secondary menu item to this element
    */
   function populateSecondaryNav(target, directTarget) {
     clearSecondaryNavItem();
@@ -321,6 +337,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   /**
    * populate secondary navigation mobile item
+   * @param {HTMLElement} target
    */
   function polulateSecondaryNavMobile(target) {
     clearSecondaryNavMobileItem();
@@ -349,7 +366,7 @@ document.addEventListener("DOMContentLoaded", function() {
   
   /**
    * logout user
-   * @param {event for logout button click} event 
+   * @param {click event} event event for logout button click
    */
   function logoutButtonClick(event) {
     var target = event.target;
@@ -362,9 +379,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
   /**
    * Animation for moving arrow to target
-   * @param {offset x} offsetX 
-   * @param {arror element} arrow 
-   * @param {target element} element 
+   * @param {number} offsetX 
+   * @param {HTMLElement} arrow 
+   * @param {HTMLElement} element 
    */
   function moveArrowTo(offsetX, arrow, element) {
     var arrowOffset = offset(element);
@@ -386,6 +403,8 @@ document.addEventListener("DOMContentLoaded", function() {
   
   /**
    * move primary arrow to target
+   * @param {number} xOffset
+   * @param {HTMLElement} target
    */
   function movePrimaryArrowTo(xOffset, target) {
     moveArrowTo(xOffset, arrowSelectedPrimaryAnimation, target);
@@ -393,7 +412,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   /**
    * Update ui for clicked sublevel 1 item
-   * @param {sublevel 1 item} target 
+   * @param {HTMLElement} target sublevel 1 item
    */
   function forceClickToSublevel1(target) {
     if (!target) {
@@ -441,7 +460,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   /**
    * Update ui when click to sub level 2 item
-   * @param {item sub level 2} target 
+   * @param {HTMLElement} target item sub level 2
    */
   function forceClickToSubLevel2(target) {
     if (!target) {
@@ -511,6 +530,8 @@ document.addEventListener("DOMContentLoaded", function() {
   
   /**
    * move secondary arrow to target
+   * @param {number} xOffset
+   * @param {HTMLElement} target
    */
   function moveSecondaryArrowTo(xOffset, target) {
     var arrowOffset = offset(secondaryNavLinkContainer);
@@ -519,7 +540,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   /**
    * Update ui when secondary level 1 item click
-   * @param {secondary level 1 item} target 
+   * @param {HTMLElement} target secondary level 1 item
    */
   function forceSecondaryLevel1Click(target) {
     if (!target) {
@@ -685,7 +706,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   /**
    * move secondary arrow animation
-   * @param {is with animation} withAnimation 
+   * @param {boolean} withAnimation 
    */
   function adjustSelectionSecondaryNavPosition(withAnimation) {
     if (withAnimation) {
@@ -718,7 +739,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   /**
    * move primary arrow animation
-   * @param {is with animation} withAnimation 
+   * @param {boolean} withAnimation 
    */
   function adjustSelectionPrimaryNavPosition(withAnimation) {
     if (withAnimation) {
@@ -751,8 +772,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
   /**
    * check to shrink menu if it too long
-   * @param {element} el 
-   * @param {link class} linkClass 
+   * @param {HTMLElement} el 
+   * @param {string} linkClass 
    */
   function checkToShrinkElement(el, linkClass) {
     if (!el) {
@@ -801,8 +822,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
   /**
    * check to expand menu if it have enough space
-   * @param {element} el 
-   * @param {link class} linkClass 
+   * @param {HTMLElement} el 
+   * @param {string} linkClass 
    */
   function expandElement(el, linkClass) {
     var children = getTheClosestChild(el);

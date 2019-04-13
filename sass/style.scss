@@ -190,6 +190,12 @@ body {
               transform: rotate(180deg);
             }
           }          
+          
+          .avatar {
+            width: 30px;
+            height: 30px;
+            display: inline-block;
+          }
         }
 
         .user-info-popup {
@@ -478,6 +484,12 @@ body {
         background: $red;
         border-radius: 6px;
         display: block;
+      }
+
+      .avatar {
+        width: 30px;
+        height: 30px;
+        display: inline-block;
       }
     }
     
@@ -844,4 +856,8 @@ body {
       }
     }
   }
+}
+
+.avatar {
+  border-radius: 100%;
 }
