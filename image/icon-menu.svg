@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="16px" viewBox="0 0 24 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
+    <title>menu-8</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Mobile-navigation-specification" transform="translate(-70.000000, -235.000000)" fill="#FFFFFF" fill-rule="nonzero">
+            <g id="Group-13" transform="translate(50.000000, 119.000000)">
+                <g id="menu-8" transform="translate(20.000000, 116.000000)">
+                    <path d="M23,9 L1,9 C0.4,9 0,8.6 0,8 C0,7.4 0.4,7 1,7 L23,7 C23.6,7 24,7.4 24,8 C24,8.6 23.6,9 23,9 Z" id="Path"></path>
+                    <path d="M23,2 L1,2 C0.4,2 0,1.6 0,1 C0,0.4 0.4,0 1,0 L23,0 C23.6,0 24,0.4 24,1 C24,1.6 23.6,2 23,2 Z" id="Path"></path>
+                    <path d="M23,16 L1,16 C0.4,16 0,15.6 0,15 C0,14.4 0.4,14 1,14 L23,14 C23.6,14 24,14.4 24,15 C24,15.6 23.6,16 23,16 Z" id="Path"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

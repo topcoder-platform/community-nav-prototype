@@ -1,0 +1,21 @@
+
+// Flex box helper classes
+.flex {
+  display: flex;
+
+  &.column {
+    flex-direction: column;
+  }
+
+  &.center {
+    justify-content: center;
+  }
+
+  &.space-between {
+    justify-content: space-between;
+  }
+
+  &.middle {
+    align-items: center;
+  }
+}
