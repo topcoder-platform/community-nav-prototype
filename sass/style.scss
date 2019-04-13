@@ -101,7 +101,7 @@ body {
       @include Roboto-Bold;
       font-size: 18px;
       line-height: 30px;
-      margin: 0 $base-unit * 6;
+      margin-left: $base-unit * 6;
       position: relative;
 
       &.more-menu {
