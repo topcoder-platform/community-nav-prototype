@@ -4,8 +4,8 @@ const app = express()
 
 app.use(express.static(path.join(__dirname, '/')))
 
-app.use('/dark', (req, res) => res.sendfile(path.join(__dirname, '/index-dark.html')))
-app.use('/light', (req, res) => res.sendfile(path.join(__dirname, '/index-light.html')))
+app.use('/dark', (req, res) => res.sendFile(path.join(__dirname, '/index-dark.html')))
+app.use('/light', (req, res) => res.sendFile(path.join(__dirname, '/index-light.html')))
 
 app.use('*', (req, res) => res.redirect('/light'))
 

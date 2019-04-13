@@ -101,7 +101,7 @@ body {
       @include Roboto-Bold;
       font-size: 18px;
       line-height: 30px;
-      margin-left: $base-unit * 6;
+      margin: 0 $base-unit * 6;
       position: relative;
 
       &.more-menu {
@@ -163,6 +163,12 @@ body {
             width: 16px;
             height: 16px;
             margin-right: 5px;
+          }
+          
+          .avatar {
+            width: 30px;
+            height: 30px;
+            display: inline-block;
           }
         }
 
@@ -265,6 +271,10 @@ body {
         text-align: center;
 
         &:first-child {
+          margin-left: 0;
+        }
+
+        &:nth-child(2) {
           margin-left: 0;
         }
 
@@ -448,6 +458,12 @@ body {
         background: $red;
         border-radius: 6px;
         display: block;
+      }
+
+      .avatar {
+        width: 30px;
+        height: 30px;
+        display: inline-block;
       }
     }
     
@@ -814,4 +830,8 @@ body {
       }
     }
   }
+}
+
+.avatar {
+  border-radius: 100%;
 }
