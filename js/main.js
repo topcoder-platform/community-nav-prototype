@@ -623,6 +623,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
     if (isSelected) {
       toggleClass(document.getElementsByClassName('user-info-popup'), "isOpen");
+      toggleClass(document.querySelectorAll('.user-info-container'), "isUserPopupOpen");
       event.preventDefault();
     } else {
       clickOutsideToClosePopupProfile(event);
@@ -637,6 +638,7 @@ document.addEventListener("DOMContentLoaded", function() {
     var userInfoPopup = document.querySelectorAll('.header-nav-ui .primary-nav .user-info-popup')[0];
     if (!isHidden(userInfoPopup) && !userInfoPopup.contains(event.target)) {
       removeClass(userInfoPopup, 'isOpen');
+      removeClass(document.querySelectorAll('.user-info-container'), "isUserPopupOpen");
     }
   }
   
