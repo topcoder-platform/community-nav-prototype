@@ -150,18 +150,15 @@ body {
         >.user-info-container {
           margin-left: 33px;
           border-radius: 15px;
-          background-color: $gray-60;
 
           .handle-container {
 
             .handle {
               display: none;
-              max-width: 0;
               font-size: 14px;
               font-weight: 700;
               line-height: 30px;
               margin-left: 5px;
-              transition: all 1s;
             }
 
             .drowdown-icon {
@@ -175,11 +172,11 @@ body {
             }
           }
 
-          &:hover .handle-container,
-          &.isUserPopupOpen .handle-container {
+          &:hover,
+          &.isUserPopupOpen {
+            background-color: $gray-60;
             
-            .handle {
-              max-width: 400px;
+            .handle-container .handle {
               display: block;
             }
           }
