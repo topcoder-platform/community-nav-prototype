@@ -1055,7 +1055,7 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   // handle avatar hover events
-  document.addEventListener('mouseenter', function (event) {
+  document.addEventListener('mouseover', function (event) {
     avatarHover(event);
   }, false);
   document.addEventListener('mouseout', function (event) {
