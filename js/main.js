@@ -949,7 +949,19 @@ document.addEventListener("DOMContentLoaded", function() {
    */
   function checkForShrinkMore() {
     var w = window.innerWidth;
+    var iconChooseArrow = document.querySelectorAll('.icon-chosen-arrow')[0];
+    var mobileMoreMenu = document.getElementsByClassName('more-menu');
+    var primaryNavBusinessMenu = primaryNav.getElementsByClassName('primary-level-1')[1]
+    var primaryNavWorkMenu = primaryNav.getElementsByClassName('primary-level-1')[2]
+    var logoRef = document.getElementsByClassName('tc-logo');
     if (w <= 768 ) {
+      // if mobile to desktop, if MORE navigation is selected, we need remove the arrow and fix the logo position
+        if (hasClass(mobileMoreMenu, 'isOpen')){
+          $(iconChooseArrow).css("display", "block");
+        }
+        // always set middle logo center
+        $(logoRef).css("margin-right", "0");
+
       if (w !== previousScreenWidth) {
         adjustSelectionPrimaryNavPosition(false);
       }
@@ -959,6 +971,17 @@ document.addEventListener("DOMContentLoaded", function() {
 
       removeClass(headerNavUi, 'isOpenSecondaryNavMobile');
       removeClass(mobileNavSubMenu, 'isOpen');
+        
+        // if mobile to desktop, if MORE navigation is selected, we need remove the arrow and fix the logo position
+        if (hasClass(mobileMoreMenu, 'isOpen')){
+          $(iconChooseArrow).css("display", "none");
+        }
+        // desktop view if check the primary navigation item selected state during resize window
+        if (hasClass(primaryNavBusinessMenu, 'isOpen') ||　hasClass(primaryNavWorkMenu, 'isOpen') ) {
+          $(logoRef).css("margin-right", "50px");
+        } else {
+          $(logoRef).css("margin-right", "auto");
+        }
     }
     iterateElement(document.getElementsByClassName('primary-level-2-container'), function(el) {
       if (hasClass(el, 'isOpen')) {
