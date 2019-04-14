@@ -911,7 +911,7 @@ document.addEventListener("DOMContentLoaded", function() {
    */
   function checkForShrinkMore() {
     var w = window.innerWidth;
-    if (w <= 550 ) {
+    if (w <= 768 ) {
       if (w !== previousScreenWidth) {
         adjustSelectionPrimaryNavPosition(false);
       }
