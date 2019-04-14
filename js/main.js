@@ -412,30 +412,30 @@ document.addEventListener("DOMContentLoaded", function() {
 
   function switchBussinessWork(event) {
     var target = event.target;
-    var value = target.innerHTML
+    // Detect mouse click target whether the switch button
+    if (!target || (!hasClass(target, 'switch-to-business-container') && !hasClass(target, 'switch-icon') && !hasClass(target, 'switch-to-busniness'))) return;
+
     var bussinessItem = primaryNav.getElementsByClassName('primary-level-1')[1];
     var bussinessItemVlue = bussinessItem.innerHTML;
     var workItem = primaryNav.getElementsByClassName('primary-level-1')[2];
     var workItemVlue = workItem.innerHTML;
     var iconChooseArrow = document.querySelectorAll('.icon-chosen-arrow')[0];
+    var switchText = document.getElementsByClassName('switch-to-busniness')[0].innerHTML;
 
     function swtichValue(switchValue, switchItem) {
       // Update the text between 'Switch to BUSINESS' and 'Switch to WORK'
-      target.innerHTML = 'Switch to ' + switchValue;
+      document.getElementsByClassName('switch-to-busniness').innerHTML = 'Switch to ' + switchValue;
       // show the arrow
       $(iconChooseArrow).css("display", "block");
       // Update ui for clicked sublevel 1 item
       forceClickToSublevel1(switchItem)
     }
 
-
-      if (value === 'Switch to ' + bussinessItemVlue) {
-        swtichValue(workItemVlue, bussinessItem)
-  
-      } else if (value === 'Switch to ' + workItemVlue) {
-        swtichValue(bussinessItemVlue, workItem)
-      }
-
+    if (switchText === 'SWITCH TO ' + bussinessItemVlue) {
+      swtichValue(workItemVlue, bussinessItem)
+    } else if (switchText === 'SWITCH TO ' + workItemVlue) {
+      swtichValue(bussinessItemVlue, workItem)
+    }
 
   }
   
@@ -459,9 +459,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // After change the navigation, the switch to text should toggle as well
     if (target.innerHTML === 'BUSINESS') {
-      document.getElementsByClassName('switch-to-busniness')[0].innerHTML = 'Switch to WORK'
+      document.getElementsByClassName('switch-to-busniness')[0].innerHTML = 'SWITCH TO WORK'
     } else if (target.innerHTML === 'WORK') {
-      document.getElementsByClassName('switch-to-busniness')[0].innerHTML = 'Switch to BUSINESS'
+      document.getElementsByClassName('switch-to-busniness')[0].innerHTML = 'SWITCH TO BUSINESS'
     }
   
     polulateSecondaryNavMobile(target);
