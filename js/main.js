@@ -495,8 +495,18 @@ document.addEventListener("DOMContentLoaded", function() {
     var iconChooseArrow = document.querySelectorAll('.icon-chosen-arrow')[0];
     $(iconChooseArrow).css("display", "block");
 
+    removeSecondaryNavBackground();
+
     forceClickToSublevel1(target);
     event.preventDefault();
+  }
+
+  function removeSecondaryNavBackground() {
+    addClass(secondaryNav, "hide");
+  }
+
+  function addSecondaryNavBackground() {
+    removeClass(secondaryNav, "hide");
   }
 
   /**
@@ -544,6 +554,7 @@ document.addEventListener("DOMContentLoaded", function() {
   function subLevel2MoreClick(event) {
     var target = event.target;
     if (!target || !hasClass(target, 'primary-level-2-more')) return;
+    addSecondaryNavBackground();
     closeMorePopup();
     forceClickToSubLevel2(target);
     event.preventDefault();
@@ -561,6 +572,7 @@ document.addEventListener("DOMContentLoaded", function() {
     var secondaryNav = document.querySelectorAll('.secondary-nav')[0];
     $(secondaryNav).css("height", "60px");
 
+    addSecondaryNavBackground();
     forceClickToSubLevel2(target);
     event.preventDefault();
   }
@@ -572,7 +584,7 @@ document.addEventListener("DOMContentLoaded", function() {
   function subLevel2MobileClick(event) {
     var target = event.target;
     if (!target || !hasClass(target, 'secondary-mobile-level-2')) return;
-    
+    addSecondaryNavBackground();
     forceClickToSubLevel2(target);
     event.preventDefault();
 
@@ -628,6 +640,7 @@ document.addEventListener("DOMContentLoaded", function() {
   function secondaryLevel1MoreClick(event) {
     var target = event.target;
     if (!target || !hasClass(target, 'secondary-level-1-more')) return;
+    addSecondaryNavBackground();
     closeMorePopup();
     forceSecondaryLevel1Click(target);
     event.preventDefault();
@@ -644,6 +657,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // make height of subMenu to 60px
     $($(target).parent()).parent().css("height", "60px"); 
 
+    addSecondaryNavBackground();
     forceSecondaryLevel1Click(target);
 
     event.preventDefault();
@@ -656,7 +670,7 @@ document.addEventListener("DOMContentLoaded", function() {
   function mobileNavSubMenuItemClick(event) {
     var target = event.target;
     if (!target || !hasClass(target, 'mobile-nav-sub-menu-item') ) return;
-
+    addSecondaryNavBackground();
     removeClass(mobileNavSubMenu, 'isOpen');
     forceSecondaryLevel1Click(target);
 
