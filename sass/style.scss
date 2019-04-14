@@ -370,21 +370,6 @@ body {
         &.isOpen {
           @include Roboto-Bold;
         }
-
-        &:hover {
-          &::after {
-            content: "";
-            display: block;
-            position: absolute;
-            bottom: -8px;
-            left: 50%;
-            width: 15px;
-            height: 3px;
-            border-radius: 1.5px;
-            background: #D4D4D4;
-            margin-left: -8px;
-          }
-        }
       }
 
       .icon-select {
