@@ -55,7 +55,8 @@
 /* colors */
 /* Grayscale colors. */
 body {
-  margin: 0; }
+  margin: 0;
+  background-color: lightgrey; }
 
 .header-nav-ui {
   font-family: "Roboto", Helvetica, Arial, sans-serif;
@@ -107,11 +108,17 @@ body {
     background: #2A2A2B;
     color: #FFFFFF;
     height: 80px;
-    position: relative; }
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end; }
     .header-nav-ui .primary-nav a {
       color: #FFFFFF; }
     .header-nav-ui .primary-nav .tc-logo {
-      margin: 0 30px; }
+      margin: 0 30px;
+      justify-self: flex-start;
+      margin-right: auto;
+      cursor: pointer; }
     .header-nav-ui .primary-nav .primary-level-1-separator {
       display: none; }
     .header-nav-ui .primary-nav .primary-level-1 {
@@ -120,11 +127,14 @@ body {
       font-size: 18px;
       line-height: 30px;
       margin: 0 30px;
+      padding-right: 5px;
       position: relative; }
       .header-nav-ui .primary-nav .primary-level-1.more-menu {
         display: none; }
       .header-nav-ui .primary-nav .primary-level-1.isOpen {
-        color: #43D7B0; }
+        color: #43D7B0;
+        justify-self: flex-start;
+        margin-right: 50px; }
         .header-nav-ui .primary-nav .primary-level-1.isOpen.isOpenSubmenu {
           color: #FFFFFF; }
       .header-nav-ui .primary-nav .primary-level-1::before {
@@ -244,7 +254,12 @@ body {
         margin-left: 30px;
         font-size: 14px;
         line-height: 30px;
-        text-align: center; }
+        text-align: center;
+        display: flex;
+        position: relative;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-content: flex-start; }
         .header-nav-ui .primary-nav .primary-level-2-container .primary-level-2:first-child {
           margin-left: 0; }
         .header-nav-ui .primary-nav .primary-level-2-container .primary-level-2:nth-child(2) {
@@ -255,6 +270,7 @@ body {
       color: #43D7B0; }
   .header-nav-ui .icon-chosen-arrow {
     position: absolute;
+    display: none;
     bottom: -1px;
     left: 0;
     transform: translate3d(166.5px, 0px, 0px); }
@@ -273,7 +289,6 @@ body {
     .theme-dark .header-nav-ui .icon-chosen-arrow .icon-dark {
       display: block; }
   .header-nav-ui .secondary-nav {
-    height: 60px;
     font-size: 13px; }
     .theme-light .header-nav-ui .secondary-nav {
       background: #FBFBFB;
