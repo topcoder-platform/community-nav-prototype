@@ -135,6 +135,9 @@ body {
         color: #43D7B0;
         justify-self: flex-start;
         margin-right: 50px; }
+        @media (max-width: 768px) {
+          .header-nav-ui .primary-nav .primary-level-1.isOpen {
+            margin-right: 0; } }
         .header-nav-ui .primary-nav .primary-level-1.isOpen.isOpenSubmenu {
           color: #FFFFFF; }
       .header-nav-ui .primary-nav .primary-level-1::before {
@@ -556,7 +559,7 @@ body {
   .header-nav-ui .more-btn-container .more-btn {
     margin-left: 10px !important; } }
 
-@media (max-width: 550px) {
+@media (max-width: 768px) {
   .header-nav-ui .user-info-popup,
   .header-nav-ui .login-container {
     display: none; }
