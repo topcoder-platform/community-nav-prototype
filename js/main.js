@@ -925,7 +925,6 @@ document.addEventListener("DOMContentLoaded", function() {
         var classKey = primaryLevel2.getAttribute('key');
         removeClass(addClass(moreContainer.querySelectorAll(".more-content-container a[key='" + classKey + "']"), 'hide'), 'isOpen');
         isChange = true;
-        break;
       }
     }
 
@@ -1062,6 +1061,28 @@ document.addEventListener("DOMContentLoaded", function() {
     userInfoContainerClick(event);
     moreButtonClick(event);
     switchBussinessWork(event)
+  }, false);
+
+  /**
+   * resize the navigation menu (if needed) when hovering avatar
+   * @param {click event} event
+   */
+  function avatarHover(event) {
+    var target = event.target;
+    if (!(target && (hasClass(target, 'login-container') || hasClass(target, 'user-info-container') || hasClass(target, 'avatar')
+      || hasClass(target, 'handle-container') || hasClass(target, 'handle') || hasClass(target, 'drowdown-icon')))) return;
+
+    checkForShrinkMore();
+    adjustSelectionPrimaryNavPosition(true);
+    adjustSelectionSecondaryNavPosition(true);
+  }
+
+  // handle avatar hover events
+  document.addEventListener('mouseover', function (event) {
+    avatarHover(event);
+  }, false);
+  document.addEventListener('mouseout', function (event) {
+    avatarHover(event);
   }, false);
 });
 
