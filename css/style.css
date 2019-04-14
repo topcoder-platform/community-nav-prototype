@@ -153,17 +153,25 @@ body {
             display: block; }
         .header-nav-ui .primary-nav .primary-level-1.login-container > .user-info-container {
           margin-left: 33px;
-          background: #555555;
           border-radius: 15px; }
-          .header-nav-ui .primary-nav .primary-level-1.login-container > .user-info-container span {
+          .header-nav-ui .primary-nav .primary-level-1.login-container > .user-info-container .handle-container .handle {
+            display: none;
             font-size: 14px;
             font-weight: 700;
             line-height: 30px;
             margin-left: 5px; }
-          .header-nav-ui .primary-nav .primary-level-1.login-container > .user-info-container .drowdown-icon {
+          .header-nav-ui .primary-nav .primary-level-1.login-container > .user-info-container .handle-container .drowdown-icon {
             width: 16px;
             height: 16px;
-            margin-right: 5px; }
+            margin: 0 5px; }
+            .header-nav-ui .primary-nav .primary-level-1.login-container > .user-info-container .handle-container .drowdown-icon .dropdown-icon {
+              transition: all 0.5s; }
+          .header-nav-ui .primary-nav .primary-level-1.login-container > .user-info-container:hover, .header-nav-ui .primary-nav .primary-level-1.login-container > .user-info-container.isUserPopupOpen {
+            background-color: #636363; }
+            .header-nav-ui .primary-nav .primary-level-1.login-container > .user-info-container:hover .handle-container .handle, .header-nav-ui .primary-nav .primary-level-1.login-container > .user-info-container.isUserPopupOpen .handle-container .handle {
+              display: block; }
+          .header-nav-ui .primary-nav .primary-level-1.login-container > .user-info-container.isUserPopupOpen .handle-container .dropdown-icon {
+            transform: rotate(180deg); }
           .header-nav-ui .primary-nav .primary-level-1.login-container > .user-info-container .avatar {
             width: 30px;
             height: 30px;
@@ -287,17 +295,6 @@ body {
         .header-nav-ui .secondary-nav .secondary-nav-link-container > a.isOpen {
           font-family: 'Roboto';
           font-weight: 700; }
-        .header-nav-ui .secondary-nav .secondary-nav-link-container > a:hover::after {
-          content: "";
-          display: block;
-          position: absolute;
-          bottom: -8px;
-          left: 50%;
-          width: 15px;
-          height: 3px;
-          border-radius: 1.5px;
-          background: #D4D4D4;
-          margin-left: -8px; }
       .header-nav-ui .secondary-nav .secondary-nav-link-container .icon-select {
         position: absolute;
         bottom: -1px;

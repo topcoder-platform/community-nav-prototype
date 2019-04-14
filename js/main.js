@@ -235,7 +235,7 @@ document.addEventListener("DOMContentLoaded", function() {
         moreContentContainer.appendChild(moreContentItem);
       }
     }
-
+    removeSecondaryNavBackground();
     forceClickToSublevel1(previousSelectElementDesktop);
   }
   createAndMappingNavData();
@@ -400,6 +400,33 @@ document.addEventListener("DOMContentLoaded", function() {
     addClass(headerNavUi, "isLoggedIn");
     checkForShrinkMore();
   }
+
+  /**
+   * Switch to BUSSINESS or WORK 
+   * @param {click event} event 
+   */
+
+  function switchBussinessWork(event) {
+    var target = event.target;
+    var value = target.innerHTML
+    var bussinessItem = primaryNav.getElementsByClassName('primary-level-1')[1];
+    var bussinessItemVlue = bussinessItem.innerHTML;
+    var workItem = primaryNav.getElementsByClassName('primary-level-1')[2];
+    var workItemVlue = workItem.innerHTML;
+
+    function swtichValue(switchValue, switchItem) {
+      target.innerHTML = 'Switch to ' + switchValue;
+      forceClickToSublevel1(switchItem)
+    }
+
+    if (value === 'Switch to ' + bussinessItemVlue) {
+      swtichValue(workItemVlue, bussinessItem)
+
+    } else if (value === 'Switch to ' + workItemVlue) {
+      swtichValue(bussinessItemVlue, workItem)
+    }
+
+  }
   
   /**
    * move primary arrow to target
@@ -417,6 +444,13 @@ document.addEventListener("DOMContentLoaded", function() {
   function forceClickToSublevel1(target) {
     if (!target) {
       return;
+    }
+
+    // After change the navigation, the switch to text should toggle as well
+    if (target.innerHTML === 'BUSINESS') {
+      document.getElementsByClassName('switch-to-busniness')[0].innerHTML = 'Switch to WORK'
+    } else if (target.innerHTML === 'WORK') {
+      document.getElementsByClassName('switch-to-busniness')[0].innerHTML = 'Switch to BUSINESS'
     }
   
     polulateSecondaryNavMobile(target);
@@ -453,9 +487,17 @@ document.addEventListener("DOMContentLoaded", function() {
   function subLevel1Click(event) {
     var target = event.target;
     if (!target || !hasClass(target, 'primary-level-1') || hasClass(target, 'login-btn') || hasClass(target, 'login-container')) return;
-
+    removeSecondaryNavBackground();
     forceClickToSublevel1(target);
     event.preventDefault();
+  }
+
+  function removeSecondaryNavBackground() {
+    addClass(secondaryNav, "hide");
+  }
+
+  function addSecondaryNavBackground() {
+    removeClass(secondaryNav, "hide");
   }
 
   /**
@@ -489,6 +531,12 @@ document.addEventListener("DOMContentLoaded", function() {
       previousLevel2ItemSelectElement = target;
     }
   }
+  
+  function closeMorePopup() {
+    iterateElement(document.querySelectorAll('.more-content-container'), function(moreContentItem) {
+      removeClass(moreContentItem.parentNode, 'isOpen');
+    });
+  }
 
   /**
    * event for sub level 2 more item click
@@ -497,7 +545,8 @@ document.addEventListener("DOMContentLoaded", function() {
   function subLevel2MoreClick(event) {
     var target = event.target;
     if (!target || !hasClass(target, 'primary-level-2-more')) return;
-    
+    addSecondaryNavBackground();
+    closeMorePopup();
     forceClickToSubLevel2(target);
     event.preventDefault();
   }
@@ -509,7 +558,7 @@ document.addEventListener("DOMContentLoaded", function() {
   function subLevel2Click(event) {
     var target = event.target;
     if (!target || !hasClass(target, 'primary-level-2')) return;
-    
+    addSecondaryNavBackground();
     forceClickToSubLevel2(target);
     event.preventDefault();
   }
@@ -521,7 +570,7 @@ document.addEventListener("DOMContentLoaded", function() {
   function subLevel2MobileClick(event) {
     var target = event.target;
     if (!target || !hasClass(target, 'secondary-mobile-level-2')) return;
-    
+    addSecondaryNavBackground();
     forceClickToSubLevel2(target);
     event.preventDefault();
 
@@ -574,7 +623,8 @@ document.addEventListener("DOMContentLoaded", function() {
   function secondaryLevel1MoreClick(event) {
     var target = event.target;
     if (!target || !hasClass(target, 'secondary-level-1-more')) return;
-    
+    addSecondaryNavBackground();
+    closeMorePopup();
     forceSecondaryLevel1Click(target);
     event.preventDefault();
   }
@@ -586,7 +636,7 @@ document.addEventListener("DOMContentLoaded", function() {
   function secondaryLevel1Click(event) {
     var target = event.target;
     if (!target || !hasClass(target, 'secondary-level-1') ) return;
-
+    addSecondaryNavBackground();
     forceSecondaryLevel1Click(target);
 
     event.preventDefault();
@@ -599,7 +649,7 @@ document.addEventListener("DOMContentLoaded", function() {
   function mobileNavSubMenuItemClick(event) {
     var target = event.target;
     if (!target || !hasClass(target, 'mobile-nav-sub-menu-item') ) return;
-
+    addSecondaryNavBackground();
     removeClass(mobileNavSubMenu, 'isOpen');
     forceSecondaryLevel1Click(target);
 
@@ -623,6 +673,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
     if (isSelected) {
       toggleClass(document.getElementsByClassName('user-info-popup'), "isOpen");
+      toggleClass(document.querySelectorAll('.user-info-container'), "isUserPopupOpen");
       event.preventDefault();
     } else {
       clickOutsideToClosePopupProfile(event);
@@ -637,6 +688,7 @@ document.addEventListener("DOMContentLoaded", function() {
     var userInfoPopup = document.querySelectorAll('.header-nav-ui .primary-nav .user-info-popup')[0];
     if (!isHidden(userInfoPopup) && !userInfoPopup.contains(event.target)) {
       removeClass(userInfoPopup, 'isOpen');
+      removeClass(document.querySelectorAll('.user-info-container'), "isUserPopupOpen");
     }
   }
   
@@ -956,6 +1008,7 @@ document.addEventListener("DOMContentLoaded", function() {
     secondaryLevel1MoreClick(event);
     userInfoContainerClick(event);
     moreButtonClick(event);
+    switchBussinessWork(event)
   }, false);
 });
 

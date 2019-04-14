@@ -149,21 +149,44 @@ body {
 
         >.user-info-container {
           margin-left: 33px;
-          background: $gray-70;
           border-radius: 15px;
 
-          span {
-            font-size: 14px;
-            font-weight: 700;
-            line-height: 30px;
-            margin-left: 5px;
+          .handle-container {
+
+            .handle {
+              display: none;
+              font-size: 14px;
+              font-weight: 700;
+              line-height: 30px;
+              margin-left: 5px;
+            }
+
+            .drowdown-icon {
+              width: 16px;
+              height: 16px;
+              margin: 0 5px;
+
+              .dropdown-icon {
+                transition: all 0.5s;
+              }
+            }
           }
 
-          .drowdown-icon {
-            width: 16px;
-            height: 16px;
-            margin-right: 5px;
+          &:hover,
+          &.isUserPopupOpen {
+            background-color: $gray-60;
+            
+            .handle-container .handle {
+              display: block;
+            }
           }
+
+          &.isUserPopupOpen .handle-container {
+            
+            .dropdown-icon {
+              transform: rotate(180deg);
+            }
+          }          
           
           .avatar {
             width: 30px;
@@ -346,21 +369,6 @@ body {
         position: relative;
         &.isOpen {
           @include Roboto-Bold;
-        }
-
-        &:hover {
-          &::after {
-            content: "";
-            display: block;
-            position: absolute;
-            bottom: -8px;
-            left: 50%;
-            width: 15px;
-            height: 3px;
-            border-radius: 1.5px;
-            background: #D4D4D4;
-            margin-left: -8px;
-          }
         }
       }
 
