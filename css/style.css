@@ -294,17 +294,6 @@ body {
         .header-nav-ui .secondary-nav .secondary-nav-link-container > a.isOpen {
           font-family: 'Roboto';
           font-weight: 700; }
-        .header-nav-ui .secondary-nav .secondary-nav-link-container > a:hover::after {
-          content: "";
-          display: block;
-          position: absolute;
-          bottom: -8px;
-          left: 50%;
-          width: 15px;
-          height: 3px;
-          border-radius: 1.5px;
-          background: #D4D4D4;
-          margin-left: -8px; }
       .header-nav-ui .secondary-nav .secondary-nav-link-container .icon-select {
         position: absolute;
         bottom: -1px;
