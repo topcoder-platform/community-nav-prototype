@@ -417,18 +417,25 @@ document.addEventListener("DOMContentLoaded", function() {
     var bussinessItemVlue = bussinessItem.innerHTML;
     var workItem = primaryNav.getElementsByClassName('primary-level-1')[2];
     var workItemVlue = workItem.innerHTML;
+    var iconChooseArrow = document.querySelectorAll('.icon-chosen-arrow')[0];
 
     function swtichValue(switchValue, switchItem) {
+      // Update the text between 'Switch to BUSINESS' and 'Switch to WORK'
       target.innerHTML = 'Switch to ' + switchValue;
+      // show the arrow
+      $(iconChooseArrow).css("display", "block");
+      // Update ui for clicked sublevel 1 item
       forceClickToSublevel1(switchItem)
     }
 
-    if (value === 'Switch to ' + bussinessItemVlue) {
-      swtichValue(workItemVlue, bussinessItem)
 
-    } else if (value === 'Switch to ' + workItemVlue) {
-      swtichValue(bussinessItemVlue, workItem)
-    }
+      if (value === 'Switch to ' + bussinessItemVlue) {
+        swtichValue(workItemVlue, bussinessItem)
+  
+      } else if (value === 'Switch to ' + workItemVlue) {
+        swtichValue(bussinessItemVlue, workItem)
+      }
+
 
   }
   
