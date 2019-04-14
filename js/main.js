@@ -494,7 +494,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // make logo margin-right as 50px so menu comes align right
     var logoRef = document.getElementsByClassName('tc-logo');
-    $(logoRef).css("margin-right", "50px");
+    if (window.innerWidth > 768) {
+      $(logoRef).css("margin-right", "50px");
+    }
 
     // make height of secondaryNav as 0, since top level Menu item is clicked
     var secondaryNav = document.querySelectorAll('.secondary-nav')[0];
