@@ -117,7 +117,8 @@ body {
     .header-nav-ui .primary-nav .tc-logo {
       margin: 0 30px;
       justify-self: flex-start;
-      margin-right: auto; }
+      margin-right: auto;
+      cursor: pointer; }
     .header-nav-ui .primary-nav .primary-level-1-separator {
       display: none; }
     .header-nav-ui .primary-nav .primary-level-1 {
