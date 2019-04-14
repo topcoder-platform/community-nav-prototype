@@ -235,8 +235,6 @@ document.addEventListener("DOMContentLoaded", function() {
         moreContentContainer.appendChild(moreContentItem);
       }
     }
-
-    forceClickToSublevel1(previousSelectElementDesktop);
   }
   createAndMappingNavData();
 
@@ -384,9 +382,11 @@ document.addEventListener("DOMContentLoaded", function() {
    * @param {HTMLElement} element 
    */
   function moveArrowTo(offsetX, arrow, element) {
-    var arrowOffset = offset(element);
-    var arrowX = offsetX + arrowOffset.left + (element.offsetWidth - arrow.offsetWidth)/2;
-    arrow.style.transform = "translate3d(" + arrowX + "px, 0, 0)";
+    if (element) {
+      var arrowOffset = offset(element);
+      var arrowX = offsetX + arrowOffset.left + (element.offsetWidth - arrow.offsetWidth)/2;
+      arrow.style.transform = "translate3d(" + arrowX + "px, 0, 0)";
+    }
   }
 
   /**
@@ -488,6 +488,13 @@ document.addEventListener("DOMContentLoaded", function() {
     var target = event.target;
     if (!target || !hasClass(target, 'primary-level-1') || hasClass(target, 'login-btn') || hasClass(target, 'login-container')) return;
 
+    // make height of secondaryNav as 0, since top level Menu item is clicked
+    var secondaryNav = document.querySelectorAll('.secondary-nav')[0];
+    $(secondaryNav).css("height", "0px");
+
+    var iconChooseArrow = document.querySelectorAll('.icon-chosen-arrow')[0];
+    $(iconChooseArrow).css("display", "block");
+
     forceClickToSublevel1(target);
     event.preventDefault();
   }
@@ -550,6 +557,10 @@ document.addEventListener("DOMContentLoaded", function() {
     var target = event.target;
     if (!target || !hasClass(target, 'primary-level-2')) return;
     
+    // make height of subMenu to 60px
+    var secondaryNav = document.querySelectorAll('.secondary-nav')[0];
+    $(secondaryNav).css("height", "60px");
+
     forceClickToSubLevel2(target);
     event.preventDefault();
   }
@@ -603,6 +614,9 @@ document.addEventListener("DOMContentLoaded", function() {
     addClass(secondaryLevel1More, 'isOpen');
     addClass(mobileNavSubMenuItem, 'isOpen');
 
+    var secondaryNav = headerNavUi.querySelectorAll('.secondary-nav')[0];
+    removeClass(secondaryNav, 'hide');
+
     removeClass(arrowSelectedSecondaryAnimation, 'hide');
     adjustSelectionSecondaryNavPosition(true);
   }
@@ -626,6 +640,9 @@ document.addEventListener("DOMContentLoaded", function() {
   function secondaryLevel1Click(event) {
     var target = event.target;
     if (!target || !hasClass(target, 'secondary-level-1') ) return;
+
+    // make height of subMenu to 60px
+    $($(target).parent()).parent().css("height", "60px"); 
 
     forceSecondaryLevel1Click(target);
 
@@ -911,14 +928,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
       removeClass(headerNavUi, 'isOpenSecondaryNavMobile');
       removeClass(mobileNavSubMenu, 'isOpen');
-      // reselect element
-      if (primaryNav.querySelectorAll('.primary-level-2-container.isOpen').length <= 0 && previousSelectElementDesktop) {
-        var previousLevel2ItemSelectElementTmp = previousLevel2ItemSelectElement;
-        forceClickToSublevel1(previousSelectElementDesktop);
-        if (previousLevel2ItemSelectElementTmp) {
-          forceClickToSubLevel2(previousLevel2ItemSelectElementTmp);
-        }
-      }
     }
     iterateElement(document.getElementsByClassName('primary-level-2-container'), function(el) {
       if (hasClass(el, 'isOpen')) {
@@ -1001,6 +1010,34 @@ document.addEventListener("DOMContentLoaded", function() {
     switchBussinessWork(event)
   }, false);
 });
+
+/**
+  * On Home Icon click
+  * @param {click event} event 
+  */
+function homeClick(event) {
+  var target = event.target;
+  if (!target || !hasClass(target, 'tc-logo')) return;
+
+  // make height of secondaryNav as 0, since top level Menu item is clicked
+  var secondaryNav = document.querySelectorAll('.secondary-nav')[0];
+  $(secondaryNav).css("height", "0px");
+
+  var iconChooseArrow = document.querySelectorAll('.icon-chosen-arrow')[0];
+  $(iconChooseArrow).css("display", "none");
+
+  // remove isOpen from opened Menu
+  removeClass(document.getElementsByClassName('primary-level-2-container'), "isOpen");
+  var headerNavUi = document.querySelectorAll('.header-nav-ui')[0];
+  var primaryNav = headerNavUi.querySelectorAll('.primary-nav')[0];
+  removeClass(removeClass(primaryNav.getElementsByClassName('primary-level-1'), "isOpen"), "isOpenSubmenu");
+  removeClass(primaryNav.querySelectorAll('.primary-level-2-container a'), "isOpen");
+
+  var secondaryNav = headerNavUi.querySelectorAll('.secondary-nav')[0];
+  addClass(secondaryNav, 'hide');
+
+  event.preventDefault();
+}
 
 // example for navigation menu
 var navMenus = [

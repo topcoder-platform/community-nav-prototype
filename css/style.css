@@ -55,7 +55,8 @@
 /* colors */
 /* Grayscale colors. */
 body {
-  margin: 0; }
+  margin: 0;
+  background-color: lightgrey; }
 
 .header-nav-ui {
   font-family: "Roboto", Helvetica, Arial, sans-serif;
@@ -107,11 +108,16 @@ body {
     background: #2A2A2B;
     color: #FFFFFF;
     height: 80px;
-    position: relative; }
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end; }
     .header-nav-ui .primary-nav a {
       color: #FFFFFF; }
     .header-nav-ui .primary-nav .tc-logo {
-      margin: 0 30px; }
+      margin: 0 30px; 
+      justify-self:flex-start;
+      margin-right: auto; }
     .header-nav-ui .primary-nav .primary-level-1-separator {
       display: none; }
     .header-nav-ui .primary-nav .primary-level-1 {
@@ -120,6 +126,7 @@ body {
       font-size: 18px;
       line-height: 30px;
       margin: 0 30px;
+      padding-right: 5px;
       position: relative; }
       .header-nav-ui .primary-nav .primary-level-1.more-menu {
         display: none; }
@@ -153,29 +160,17 @@ body {
             display: block; }
         .header-nav-ui .primary-nav .primary-level-1.login-container > .user-info-container {
           margin-left: 33px;
+          background: #555555;
           border-radius: 15px; }
-          .header-nav-ui .primary-nav .primary-level-1.login-container > .user-info-container .handle-container .handle {
-            display: none;
+          .header-nav-ui .primary-nav .primary-level-1.login-container > .user-info-container span {
             font-size: 14px;
             font-weight: 700;
             line-height: 30px;
             margin-left: 5px; }
-          .header-nav-ui .primary-nav .primary-level-1.login-container > .user-info-container .handle-container .drowdown-icon {
+          .header-nav-ui .primary-nav .primary-level-1.login-container > .user-info-container .drowdown-icon {
             width: 16px;
             height: 16px;
-            margin: 0 5px; }
-            .header-nav-ui .primary-nav .primary-level-1.login-container > .user-info-container .handle-container .drowdown-icon .dropdown-icon {
-              transition: all 0.5s; }
-          .header-nav-ui .primary-nav .primary-level-1.login-container > .user-info-container:hover, .header-nav-ui .primary-nav .primary-level-1.login-container > .user-info-container.isUserPopupOpen {
-            background-color: #636363; }
-            .header-nav-ui .primary-nav .primary-level-1.login-container > .user-info-container:hover .handle-container .handle, .header-nav-ui .primary-nav .primary-level-1.login-container > .user-info-container.isUserPopupOpen .handle-container .handle {
-              display: block; }
-          .header-nav-ui .primary-nav .primary-level-1.login-container > .user-info-container.isUserPopupOpen .handle-container .dropdown-icon {
-            transform: rotate(180deg); }
-          .header-nav-ui .primary-nav .primary-level-1.login-container > .user-info-container .avatar {
-            width: 30px;
-            height: 30px;
-            display: inline-block; }
+            margin-right: 5px; }
         .header-nav-ui .primary-nav .primary-level-1.login-container .user-info-popup {
           position: absolute;
           right: 0;
@@ -244,10 +239,13 @@ body {
         margin-left: 30px;
         font-size: 14px;
         line-height: 30px;
-        text-align: center; }
+        text-align: center;
+        display: flex;
+        position: relative;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-content: flex-start; }
         .header-nav-ui .primary-nav .primary-level-2-container .primary-level-2:first-child {
-          margin-left: 0; }
-        .header-nav-ui .primary-nav .primary-level-2-container .primary-level-2:nth-child(2) {
           margin-left: 0; }
         .header-nav-ui .primary-nav .primary-level-2-container .primary-level-2.isOpen {
           color: #43D7B0; }
@@ -255,6 +253,7 @@ body {
       color: #43D7B0; }
   .header-nav-ui .icon-chosen-arrow {
     position: absolute;
+    display: none;
     bottom: -1px;
     left: 0;
     transform: translate3d(166.5px, 0px, 0px); }
@@ -273,7 +272,7 @@ body {
     .theme-dark .header-nav-ui .icon-chosen-arrow .icon-dark {
       display: block; }
   .header-nav-ui .secondary-nav {
-    height: 60px;
+    height: 0px;
     font-size: 13px; }
     .theme-light .header-nav-ui .secondary-nav {
       background: #FBFBFB;
@@ -371,10 +370,6 @@ body {
         background: #EF476F;
         border-radius: 6px;
         display: block; }
-      .header-nav-ui .mobile-nav .avatar-container .avatar {
-        width: 30px;
-        height: 30px;
-        display: inline-block; }
     .header-nav-ui .mobile-nav span {
       font-family: 'Roboto';
       font-weight: 700;
@@ -600,6 +595,3 @@ body {
     display: flex; }
   .header-nav-ui.isOpenSecondaryNavMobile .mobile-nav-sub-menu {
     display: none; } }
-
-.avatar {
-  border-radius: 100%; }
