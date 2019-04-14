@@ -235,6 +235,10 @@ document.addEventListener("DOMContentLoaded", function() {
         moreContentContainer.appendChild(moreContentItem);
       }
     }
+
+    // side subMenu on first load
+    var secondaryNav = headerNavUi.querySelectorAll('.secondary-nav')[0];
+    addClass(secondaryNav, 'hide');
   }
   createAndMappingNavData();
 
@@ -487,6 +491,11 @@ document.addEventListener("DOMContentLoaded", function() {
   function subLevel1Click(event) {
     var target = event.target;
     if (!target || !hasClass(target, 'primary-level-1') || hasClass(target, 'login-btn') || hasClass(target, 'login-container')) return;
+
+    // make logo margin-right as 50px so menu comes align right
+    var logoRef = document.getElementsByClassName('tc-logo');
+    console.log('logoRef: ' + logoRef);
+    $(logoRef).css("margin-right", "50px");
 
     // make height of secondaryNav as 0, since top level Menu item is clicked
     var secondaryNav = document.querySelectorAll('.secondary-nav')[0];
@@ -1032,6 +1041,10 @@ document.addEventListener("DOMContentLoaded", function() {
 function homeClick(event) {
   var target = event.target;
   if (!target || !hasClass(target, 'tc-logo')) return;
+
+  // make logo margin-right as 50px so menu comes align right
+  var logoRef = document.getElementsByClassName('tc-logo');
+  $(logoRef).css("margin-right", "auto");
 
   // make height of secondaryNav as 0, since top level Menu item is clicked
   var secondaryNav = document.querySelectorAll('.secondary-nav')[0];
