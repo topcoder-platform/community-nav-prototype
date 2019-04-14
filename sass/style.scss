@@ -119,9 +119,8 @@ body {
       &.isOpen {
         color: $turquoise;
         justify-self:flex-start;
-        margin-right: $base-unit * 10;
-        @media (max-width: 768px) {
-          margin-right: 0;
+        @media (min-width: 768px) {
+          margin-right: $base-unit * 10;
         }
 
         &.isOpenSubmenu {

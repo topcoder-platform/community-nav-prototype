@@ -133,11 +133,10 @@ body {
         display: none; }
       .header-nav-ui .primary-nav .primary-level-1.isOpen {
         color: #43D7B0;
-        justify-self: flex-start;
-        margin-right: 50px; }
-        @media (max-width: 768px) {
+        justify-self: flex-start; }
+        @media (min-width: 768px) {
           .header-nav-ui .primary-nav .primary-level-1.isOpen {
-            margin-right: 0; } }
+            margin-right: 50px; } }
         .header-nav-ui .primary-nav .primary-level-1.isOpen.isOpenSubmenu {
           color: #FFFFFF; }
       .header-nav-ui .primary-nav .primary-level-1::before {
