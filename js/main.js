@@ -583,7 +583,7 @@ document.addEventListener("DOMContentLoaded", function() {
    */
   function subLevel2Click(event) {
     var target = event.target;
-    if (!target || !hasClass(target, 'primary-level-2')) return;
+    if (!target || !(hasClass(target, 'primary-level-2') || hasClass(target, 'primary-level-2-more'))) return;
     
     // make height of subMenu to 60px
     var secondaryNav = document.querySelectorAll('.secondary-nav')[0];
