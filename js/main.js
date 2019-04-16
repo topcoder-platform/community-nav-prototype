@@ -171,7 +171,7 @@ function isHidden(el) {
 
 document.addEventListener("DOMContentLoaded", function() {
 
-  var spaceForShrinkMore = 50; // use for control the distance to the left, if the distance less then this then shrink the menu
+  var spaceForShrinkMore = 100; // use for control the distance to the left, if the distance less then this then shrink the menu
   var headerNavUi = document.querySelectorAll('.header-nav-ui')[0];
   var primaryNav = headerNavUi.querySelectorAll('.primary-nav')[0];
   var arrowSelectedPrimaryAnimation = primaryNav.getElementsByClassName('icon-chosen-arrow')[0];
@@ -236,7 +236,9 @@ document.addEventListener("DOMContentLoaded", function() {
       }
     }
 
-    forceClickToSublevel1(previousSelectElementDesktop);
+    // side subMenu on first load
+    var secondaryNav = headerNavUi.querySelectorAll('.secondary-nav')[0];
+    addClass(secondaryNav, 'hide');
   }
   createAndMappingNavData();
 
@@ -384,9 +386,11 @@ document.addEventListener("DOMContentLoaded", function() {
    * @param {HTMLElement} element 
    */
   function moveArrowTo(offsetX, arrow, element) {
-    var arrowOffset = offset(element);
-    var arrowX = offsetX + arrowOffset.left + (element.offsetWidth - arrow.offsetWidth)/2;
-    arrow.style.transform = "translate3d(" + arrowX + "px, 0, 0)";
+    if (element) {
+      var arrowOffset = offset(element);
+      var arrowX = offsetX + arrowOffset.left + (element.offsetWidth - arrow.offsetWidth)/2;
+      arrow.style.transform = "translate3d(" + arrowX + "px, 0, 0)";
+    }
   }
 
   /**
@@ -399,6 +403,40 @@ document.addEventListener("DOMContentLoaded", function() {
 
     addClass(headerNavUi, "isLoggedIn");
     checkForShrinkMore();
+  }
+
+  /**
+   * Switch to BUSSINESS or WORK 
+   * @param {click event} event 
+   */
+
+  function switchBussinessWork(event) {
+    var target = event.target;
+    // Detect mouse click target whether the switch button
+    if (!target || (!hasClass(target, 'switch-to-business-container') && !hasClass(target, 'switch-icon') && !hasClass(target, 'switch-to-busniness'))) return;
+
+    var bussinessItem = primaryNav.getElementsByClassName('primary-level-1')[1];
+    var bussinessItemVlue = bussinessItem.innerHTML;
+    var workItem = primaryNav.getElementsByClassName('primary-level-1')[2];
+    var workItemVlue = workItem.innerHTML;
+    var iconChooseArrow = document.querySelectorAll('.icon-chosen-arrow')[0];
+    var switchText = document.getElementsByClassName('switch-to-busniness')[0].innerHTML;
+
+    function swtichValue(switchValue, switchItem) {
+      // Update the text between 'Switch to BUSINESS' and 'Switch to WORK'
+      document.getElementsByClassName('switch-to-busniness').innerHTML = 'Switch to ' + switchValue;
+      // show the arrow
+      $(iconChooseArrow).css("display", "block");
+      // Update ui for clicked sublevel 1 item
+      forceClickToSublevel1(switchItem)
+    }
+
+    if (switchText === 'Switch to ' + bussinessItemVlue) {
+      swtichValue(workItemVlue, bussinessItem)
+    } else if (switchText === 'Switch to ' + workItemVlue) {
+      swtichValue(bussinessItemVlue, workItem)
+    }
+
   }
   
   /**
@@ -417,6 +455,13 @@ document.addEventListener("DOMContentLoaded", function() {
   function forceClickToSublevel1(target) {
     if (!target) {
       return;
+    }
+
+    // After change the navigation, the Switch to text should toggle as well
+    if (target.innerHTML === 'BUSINESS') {
+      document.getElementsByClassName('switch-to-busniness')[0].innerHTML = 'Switch to WORK'
+    } else if (target.innerHTML === 'WORK') {
+      document.getElementsByClassName('switch-to-busniness')[0].innerHTML = 'Switch to BUSINESS'
     }
   
     polulateSecondaryNavMobile(target);
@@ -454,8 +499,31 @@ document.addEventListener("DOMContentLoaded", function() {
     var target = event.target;
     if (!target || !hasClass(target, 'primary-level-1') || hasClass(target, 'login-btn') || hasClass(target, 'login-container')) return;
 
+    // make logo margin-right as 50px so menu comes align right
+    var logoRef = document.getElementsByClassName('tc-logo');
+    if (window.innerWidth > 768) {
+      $(logoRef).css("margin-right", "50px");
+    }
+
+    // make height of secondaryNav as 0, since top level Menu item is clicked
+    var secondaryNav = document.querySelectorAll('.secondary-nav')[0];
+    $(secondaryNav).css("height", "0px");
+
+    var iconChooseArrow = document.querySelectorAll('.icon-chosen-arrow')[0];
+    $(iconChooseArrow).css("display", "block");
+
+    removeSecondaryNavBackground();
+
     forceClickToSublevel1(target);
     event.preventDefault();
+  }
+
+  function removeSecondaryNavBackground() {
+    addClass(secondaryNav, "hide");
+  }
+
+  function addSecondaryNavBackground() {
+    removeClass(secondaryNav, "hide");
   }
 
   /**
@@ -503,6 +571,7 @@ document.addEventListener("DOMContentLoaded", function() {
   function subLevel2MoreClick(event) {
     var target = event.target;
     if (!target || !hasClass(target, 'primary-level-2-more')) return;
+    addSecondaryNavBackground();
     closeMorePopup();
     forceClickToSubLevel2(target);
     event.preventDefault();
@@ -514,8 +583,13 @@ document.addEventListener("DOMContentLoaded", function() {
    */
   function subLevel2Click(event) {
     var target = event.target;
-    if (!target || !hasClass(target, 'primary-level-2')) return;
+    if (!target || !(hasClass(target, 'primary-level-2') || hasClass(target, 'primary-level-2-more'))) return;
     
+    // make height of subMenu to 60px
+    var secondaryNav = document.querySelectorAll('.secondary-nav')[0];
+    $(secondaryNav).css("height", "60px");
+
+    addSecondaryNavBackground();
     forceClickToSubLevel2(target);
     event.preventDefault();
   }
@@ -527,7 +601,7 @@ document.addEventListener("DOMContentLoaded", function() {
   function subLevel2MobileClick(event) {
     var target = event.target;
     if (!target || !hasClass(target, 'secondary-mobile-level-2')) return;
-    
+    addSecondaryNavBackground();
     forceClickToSubLevel2(target);
     event.preventDefault();
 
@@ -569,6 +643,9 @@ document.addEventListener("DOMContentLoaded", function() {
     addClass(secondaryLevel1More, 'isOpen');
     addClass(mobileNavSubMenuItem, 'isOpen');
 
+    var secondaryNav = headerNavUi.querySelectorAll('.secondary-nav')[0];
+    removeClass(secondaryNav, 'hide');
+
     removeClass(arrowSelectedSecondaryAnimation, 'hide');
     adjustSelectionSecondaryNavPosition(true);
   }
@@ -580,6 +657,7 @@ document.addEventListener("DOMContentLoaded", function() {
   function secondaryLevel1MoreClick(event) {
     var target = event.target;
     if (!target || !hasClass(target, 'secondary-level-1-more')) return;
+    addSecondaryNavBackground();
     closeMorePopup();
     forceSecondaryLevel1Click(target);
     event.preventDefault();
@@ -593,6 +671,10 @@ document.addEventListener("DOMContentLoaded", function() {
     var target = event.target;
     if (!target || !hasClass(target, 'secondary-level-1') ) return;
 
+    // make height of subMenu to 60px
+    $($(target).parent()).parent().css("height", "60px"); 
+
+    addSecondaryNavBackground();
     forceSecondaryLevel1Click(target);
 
     event.preventDefault();
@@ -605,7 +687,7 @@ document.addEventListener("DOMContentLoaded", function() {
   function mobileNavSubMenuItemClick(event) {
     var target = event.target;
     if (!target || !hasClass(target, 'mobile-nav-sub-menu-item') ) return;
-
+    addSecondaryNavBackground();
     removeClass(mobileNavSubMenu, 'isOpen');
     forceSecondaryLevel1Click(target);
 
@@ -843,7 +925,6 @@ document.addEventListener("DOMContentLoaded", function() {
         var classKey = primaryLevel2.getAttribute('key');
         removeClass(addClass(moreContainer.querySelectorAll(".more-content-container a[key='" + classKey + "']"), 'hide'), 'isOpen');
         isChange = true;
-        break;
       }
     }
 
@@ -867,7 +948,19 @@ document.addEventListener("DOMContentLoaded", function() {
    */
   function checkForShrinkMore() {
     var w = window.innerWidth;
-    if (w <= 550 ) {
+    var iconChooseArrow = document.querySelectorAll('.icon-chosen-arrow')[0];
+    var mobileMoreMenu = document.getElementsByClassName('more-menu');
+    var primaryNavBusinessMenu = primaryNav.getElementsByClassName('primary-level-1')[1]
+    var primaryNavWorkMenu = primaryNav.getElementsByClassName('primary-level-1')[2]
+    var logoRef = document.getElementsByClassName('tc-logo');
+    if (w <= 768 ) {
+      // if mobile to desktop, if MORE navigation is selected, we need remove the arrow and fix the logo position
+        if (hasClass(mobileMoreMenu, 'isOpen')){
+          $(iconChooseArrow).css("display", "block");
+        }
+        // always set middle logo center
+        $(logoRef).css("margin-right", "0");
+
       if (w !== previousScreenWidth) {
         adjustSelectionPrimaryNavPosition(false);
       }
@@ -877,14 +970,17 @@ document.addEventListener("DOMContentLoaded", function() {
 
       removeClass(headerNavUi, 'isOpenSecondaryNavMobile');
       removeClass(mobileNavSubMenu, 'isOpen');
-      // reselect element
-      if (primaryNav.querySelectorAll('.primary-level-2-container.isOpen').length <= 0 && previousSelectElementDesktop) {
-        var previousLevel2ItemSelectElementTmp = previousLevel2ItemSelectElement;
-        forceClickToSublevel1(previousSelectElementDesktop);
-        if (previousLevel2ItemSelectElementTmp) {
-          forceClickToSubLevel2(previousLevel2ItemSelectElementTmp);
+        
+        // if mobile to desktop, if MORE navigation is selected, we need remove the arrow and fix the logo position
+        if (hasClass(mobileMoreMenu, 'isOpen')){
+          $(iconChooseArrow).css("display", "none");
         }
-      }
+        // desktop view if check the primary navigation item selected state during resize window
+        if (hasClass(primaryNavBusinessMenu, 'isOpen') ||　hasClass(primaryNavWorkMenu, 'isOpen') ) {
+          $(logoRef).css("margin-right", "50px");
+        } else {
+          $(logoRef).css("margin-right", "auto");
+        }
     }
     iterateElement(document.getElementsByClassName('primary-level-2-container'), function(el) {
       if (hasClass(el, 'isOpen')) {
@@ -964,8 +1060,63 @@ document.addEventListener("DOMContentLoaded", function() {
     secondaryLevel1MoreClick(event);
     userInfoContainerClick(event);
     moreButtonClick(event);
+    switchBussinessWork(event)
+  }, false);
+
+  /**
+   * resize the navigation menu (if needed) when hovering avatar
+   * @param {click event} event
+   */
+  function avatarHover(event) {
+    var target = event.target;
+    if (!(target && (hasClass(target, 'login-container') || hasClass(target, 'user-info-container') || hasClass(target, 'avatar')
+      || hasClass(target, 'handle-container') || hasClass(target, 'handle') || hasClass(target, 'drowdown-icon')))) return;
+
+    checkForShrinkMore();
+    adjustSelectionPrimaryNavPosition(true);
+    adjustSelectionSecondaryNavPosition(true);
+  }
+
+  // handle avatar hover events
+  document.addEventListener('mouseover', function (event) {
+    avatarHover(event);
+  }, false);
+  document.addEventListener('mouseout', function (event) {
+    avatarHover(event);
   }, false);
 });
+
+/**
+  * On Home Icon click
+  * @param {click event} event 
+  */
+function homeClick(event) {
+  var target = event.target;
+  if (!target || !hasClass(target, 'tc-logo')) return;
+
+  // make logo margin-right as 50px so menu comes align right
+  var logoRef = document.getElementsByClassName('tc-logo');
+  $(logoRef).css("margin-right", "auto");
+
+  // make height of secondaryNav as 0, since top level Menu item is clicked
+  var secondaryNav = document.querySelectorAll('.secondary-nav')[0];
+  $(secondaryNav).css("height", "0px");
+
+  var iconChooseArrow = document.querySelectorAll('.icon-chosen-arrow')[0];
+  $(iconChooseArrow).css("display", "none");
+
+  // remove isOpen from opened Menu
+  removeClass(document.getElementsByClassName('primary-level-2-container'), "isOpen");
+  var headerNavUi = document.querySelectorAll('.header-nav-ui')[0];
+  var primaryNav = headerNavUi.querySelectorAll('.primary-nav')[0];
+  removeClass(removeClass(primaryNav.getElementsByClassName('primary-level-1'), "isOpen"), "isOpenSubmenu");
+  removeClass(primaryNav.querySelectorAll('.primary-level-2-container a'), "isOpen");
+
+  var secondaryNav = headerNavUi.querySelectorAll('.secondary-nav')[0];
+  addClass(secondaryNav, 'hide');
+
+  event.preventDefault();
+}
 
 // example for navigation menu
 var navMenus = [

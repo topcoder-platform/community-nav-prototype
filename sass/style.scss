@@ -7,6 +7,7 @@
 
 body {
   margin: 0;
+  background-color: lightgrey;
 }
 
 .header-nav-ui {
@@ -84,6 +85,9 @@ body {
     color: $white;
     height: 80px;
     position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
 
     a {
       color: $white;
@@ -91,6 +95,9 @@ body {
 
     .tc-logo {
       margin: 0 $base-unit * 6;
+      justify-self:flex-start;
+      margin-right: auto;
+      cursor: pointer;
     }
 
     .primary-level-1-separator {
@@ -102,6 +109,7 @@ body {
       font-size: 18px;
       line-height: 30px;
       margin: 0 $base-unit * 6;
+      padding-right: 5px;
       position: relative;
 
       &.more-menu {
@@ -110,6 +118,7 @@ body {
       
       &.isOpen {
         color: $turquoise;
+        justify-self:flex-start;
 
         &.isOpenSubmenu {
           color: $white;
@@ -292,6 +301,11 @@ body {
         font-size: 14px;
         line-height: 30px;
         text-align: center;
+        display: flex;
+        position: relative;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-content: flex-start;
 
         &:first-child {
           margin-left: 0;
@@ -320,6 +334,7 @@ body {
 
   .icon-chosen-arrow {
     position: absolute;
+    display: none;
     bottom: -1px;
     left: 0;
     transform: translate3d(166.5px, 0px, 0px);
@@ -351,7 +366,6 @@ body {
       color: themed('secondaryTextColor');
     }
     
-    height: 60px;
     font-size: 13px;
 
     a {
@@ -369,21 +383,6 @@ body {
         position: relative;
         &.isOpen {
           @include Roboto-Bold;
-        }
-
-        &:hover {
-          &::after {
-            content: "";
-            display: block;
-            position: absolute;
-            bottom: -8px;
-            left: 50%;
-            width: 15px;
-            height: 3px;
-            border-radius: 1.5px;
-            background: #D4D4D4;
-            margin-left: -8px;
-          }
         }
       }
 
@@ -761,7 +760,7 @@ body {
 
 
 
-@media (max-width: 550px) {
+@media (max-width: 768px) {
   .header-nav-ui {
     .user-info-popup,
     .login-container {
