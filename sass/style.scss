@@ -163,7 +163,7 @@ body {
           .handle-container {
 
             .handle {
-              display: none;
+              display: block;
               font-size: 14px;
               font-weight: 700;
               line-height: 30px;
@@ -183,7 +183,7 @@ body {
 
           &:hover,
           &.isUserPopupOpen {
-            background-color: $gray-60;
+            background-color: $gray-hover-profile-icon;
             
             .handle-container .handle {
               display: block;
