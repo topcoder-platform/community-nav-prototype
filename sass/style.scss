@@ -291,9 +291,7 @@ body {
     .primary-level-2-container {
       display: none;
       margin: 0 auto 0 0;
-      // margin-left: auto;
-      // margin-right: 0;
-      // flex: 1;
+
       &.isOpen {
         display: flex;
       }
