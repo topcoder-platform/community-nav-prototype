@@ -24,6 +24,7 @@ body {
       margin-left: $base-unit * 4 !important;
       width: 74px;
       height: 30px;
+      justify-content: center !important;
 
       > .dropdown-icon {
         margin-left: 8px;
@@ -290,7 +291,9 @@ body {
     .primary-level-2-container {
       display: none;
       margin: 0 auto 0 0;
-
+      // margin-left: auto;
+      // margin-right: 0;
+      // flex: 1;
       &.isOpen {
         display: flex;
       }
