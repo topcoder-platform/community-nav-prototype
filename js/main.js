@@ -171,7 +171,7 @@ function isHidden(el) {
 
 document.addEventListener("DOMContentLoaded", function() {
 
-  var spaceForShrinkMore = 50; // use for control the distance to the left, if the distance less then this then shrink the menu
+  var spaceForShrinkMore = 100; // use for control the distance to the left, if the distance less then this then shrink the menu
   var headerNavUi = document.querySelectorAll('.header-nav-ui')[0];
   var primaryNav = headerNavUi.querySelectorAll('.primary-nav')[0];
   var arrowSelectedPrimaryAnimation = primaryNav.getElementsByClassName('icon-chosen-arrow')[0];
