@@ -389,7 +389,7 @@ document.addEventListener("DOMContentLoaded", function() {
     if (element) {
       var arrowOffset = offset(element);
       var arrowX = offsetX + arrowOffset.left + (element.offsetWidth - arrow.offsetWidth)/2;
-      arrow.style.transform = "translate3d(" + arrowX + "px, 0, 0)";
+      arrow.style.transform = "translateX(" + arrowX + "px)";
     }
   }
 
