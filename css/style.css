@@ -7,6 +7,7 @@
   .flex.space-between {
     justify-content: space-between; }
   .flex.middle {
+    -webkit-align-items: center;
     align-items: center; }
 
 /* colors */
@@ -67,7 +68,8 @@ body {
   .header-nav-ui .more-btn-container .more-btn {
     margin-left: 20px !important;
     width: 74px;
-    height: 30px; }
+    height: 30px;
+    justify-content: center !important; }
     .header-nav-ui .more-btn-container .more-btn > .dropdown-icon {
       margin-left: 8px; }
   .header-nav-ui .more-btn-container .more-content-container {
@@ -164,7 +166,7 @@ body {
           margin-left: 33px;
           border-radius: 15px; }
           .header-nav-ui .primary-nav .primary-level-1.login-container > .user-info-container .handle-container .handle {
-            display: none;
+            display: block;
             font-size: 14px;
             font-weight: 700;
             line-height: 30px;
@@ -176,7 +178,7 @@ body {
             .header-nav-ui .primary-nav .primary-level-1.login-container > .user-info-container .handle-container .drowdown-icon .dropdown-icon {
               transition: all 0.5s; }
           .header-nav-ui .primary-nav .primary-level-1.login-container > .user-info-container:hover, .header-nav-ui .primary-nav .primary-level-1.login-container > .user-info-container.isUserPopupOpen {
-            background-color: #636363; }
+            background-color: rgba(85, 85, 85, 0.4); }
             .header-nav-ui .primary-nav .primary-level-1.login-container > .user-info-container:hover .handle-container .handle, .header-nav-ui .primary-nav .primary-level-1.login-container > .user-info-container.isUserPopupOpen .handle-container .handle {
               display: block; }
           .header-nav-ui .primary-nav .primary-level-1.login-container > .user-info-container.isUserPopupOpen .handle-container .dropdown-icon {
