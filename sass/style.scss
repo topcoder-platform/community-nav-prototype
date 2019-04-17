@@ -340,24 +340,19 @@ body {
     left: 0;
     transform: translate3d(166.5px, 0px, 0px);
 
+    svg {
+      display: block;
+      @include themify($themes) {
+        fill: themed('arrowBackground');
+      }
+    }
+
     &.isAnimation {
       -webkit-transition: -webkit-transform 0.5s;
       transition: transform 0.5s;
       -webkit-transition-timing-function: cubic-bezier(1, 0.01, 0, 1);
       -webkit-transition-timing-function: cubic-bezier(1, 0.01, 0, 1.22);
       transition-timing-function: cubic-bezier(1, 0.01, 0, 1.22);
-    }
-
-    .icon-light {
-      @include themify($themes) {
-        display: themed('iconLightDisplay');
-      }
-    }
-
-    .icon-dark {
-      @include themify($themes) {
-        display: themed('iconDarkDisplay');
-      }
     }
   }
 
