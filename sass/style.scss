@@ -112,6 +112,7 @@ body {
       margin: 0 $base-unit * 6;
       padding-right: 5px;
       position: relative;
+      transition: 0.25s transform ease-out;
 
       &.more-menu {
         display: none;
@@ -120,6 +121,9 @@ body {
       &.isOpen {
         color: $turquoise;
         justify-self:flex-start;
+        transform: translateX(-10vh);
+        margin-left: 100px;
+        margin-right: 0px;
 
         &.isOpenSubmenu {
           color: $white;

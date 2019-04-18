@@ -374,6 +374,7 @@ document.addEventListener("DOMContentLoaded", function() {
     var target = event.target;
     if (!target || !hasClass(target, 'logout-btn')) return;
 
+    isLoginLogoutClick = false;
     removeClass(headerNavUi, "isLoggedIn");
     removeClass(document.getElementsByClassName('user-info-popup'), "isOpen");
     checkForShrinkMore();
@@ -389,9 +390,14 @@ document.addEventListener("DOMContentLoaded", function() {
     if (element) {
       var arrowOffset = offset(element);
       var arrowX = offsetX + arrowOffset.left + (element.offsetWidth - arrow.offsetWidth)/2;
+      if (element.classList.contains('primary-level-1') && !isLoginLogoutClick) {
+        arrowX = arrowX - 90;
+      }
       arrow.style.transform = "translateX(" + arrowX + "px)";
     }
   }
+
+  var isLoginLogoutClick = false;
 
   /**
    * Login 
@@ -401,6 +407,7 @@ document.addEventListener("DOMContentLoaded", function() {
     var target = event.target;
     if (!target || !hasClass(target, 'login-btn')) return;
 
+    isLoginLogoutClick = true;
     addClass(headerNavUi, "isLoggedIn");
     checkForShrinkMore();
   }
@@ -1049,12 +1056,12 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // handle click event
   document.addEventListener('click', function (event) {
+    loginButtonClick(event);
+    logoutButtonClick(event);
     subLevel1Click(event);
     subLevel2Click(event);
     subLevel2MoreClick(event);
     subLevel2MobileClick(event);
-    loginButtonClick(event);
-    logoutButtonClick(event);
     secondaryLevel1Click(event);
     mobileNavSubMenuItemClick(event);
     secondaryLevel1MoreClick(event);
