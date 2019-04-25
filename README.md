@@ -37,7 +37,7 @@ Theme is in sass/_global/_themes.scss
 ## Run web
 
 ```
-npm start
+npm start 
 ```
 
 - Then open http://localhost:3000/dark for dark theme in browser
