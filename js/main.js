@@ -183,6 +183,11 @@ document.addEventListener("DOMContentLoaded", function() {
   var previousSelectElementDesktop = null;
   var previousLevel2ItemSelectElement = null;
   var selectingLevel1ClassKey = null;
+  var notificationPanelPopup = document.querySelectorAll('.notification-popup')[0];
+  var notificationPanelEmpty = document.querySelectorAll('.notifications-panel')[0];
+  var notificationPanelFull = document.querySelectorAll('.notifications-panel')[1];
+  var notificationPanelEmptyMobile = document.querySelectorAll('.mobile-notifications-panel')[0];
+  var notificationPanelFullMobile = document.querySelectorAll('.mobile-notifications-panel')[1];
 
   /**
    * create nav from json object
@@ -403,6 +408,102 @@ document.addEventListener("DOMContentLoaded", function() {
 
     addClass(headerNavUi, "isLoggedIn");
     checkForShrinkMore();
+  }
+  
+  /**
+   * Scroll the mobile notification popup
+   * @param {click event} event 
+   */
+  document.getElementsByClassName('mobile-notifications-panel')[1].addEventListener("scroll", function(){
+    console.log("scroll")
+    if(document.getElementsByClassName('mobile-notifications-panel')[1].scrollTop >= 50) {
+      addClass(notificationPanelFullMobile, "fixTop");
+    } else {
+      removeClass(notificationPanelFullMobile, "fixTop");
+    }
+  });
+  
+  /**
+   * Notifications 
+   * @param {click event} event 
+   */
+  var showEmpty = true;
+  function notificationsButtonClick(event) {
+    var target = event.target;
+    if (!target || !hasClass(target, 'notifi-image')) return;
+    
+    if (showEmpty) {
+      addClass(notificationPanelPopup, 'isNotificationsPopupOpen');
+      removeClass(notificationPanelEmpty, "hide");
+      showEmpty = false;
+    } else {
+      addClass(notificationPanelEmpty, "hide");
+      addClass(notificationPanelPopup, 'isNotificationsPopupOpen');
+      removeClass(notificationPanelFull, "hide");
+    }
+  }
+  
+  /**
+   * Mobile Notifications 
+   * @param {click event} event 
+   */
+  var showEmpty = true;
+  function notificationsMobileButtonClick(event) {
+    var target = event.target;
+    if (!target || !hasClass(target, 'notification-right-arrow')) return;
+    
+    if (showEmpty) {
+      removeClass(notificationPanelEmptyMobile, "hide");
+      showEmpty = false;
+    } else {
+      removeClass(notificationPanelFullMobile, "hide");
+    }
+  }
+  
+  /**
+   * Close Mobile Notifications 
+   * @param {click event} event 
+   */
+  var showEmpty = true;
+  function notificationsMobileBackClick(event) {
+    var target = event.target;
+    if (!target || !hasClass(target, 'notification-back-btn')) return;
+    
+    addClass(notificationPanelEmptyMobile, "hide");
+    addClass(notificationPanelFullMobile, "hide");
+  }
+  
+  /**
+   * Show popup notifications info
+   * @param {click event} event 
+   */
+  function notificationsInfoContainerClick(event) {
+    var isSelected = false;
+    var target = event.target;
+    if (!target) {
+      return;
+    }
+    iterateElement(document.querySelectorAll('.notifications-panel'), function(el) {
+      if (el.contains(target)) {
+        isSelected = true;
+      }
+    });
+    if (isSelected) {
+      event.preventDefault();
+    } else {
+      clickOutsideToClosePopupNotifications(event);
+    }
+  }
+
+  /**
+   * click outside to hide popup notifications
+   * @param {click event} event 
+   */
+  function clickOutsideToClosePopupNotifications(event) {
+    var notificationPanelPopup = document.querySelectorAll('.header-nav-ui .notification-popup')[0];
+    if (!isHidden(notificationPanelPopup) && !notificationPanelPopup.contains(event.target)) {
+      removeClass(notificationPanelPopup, 'isNotificationsPopupOpen');
+    }
   }
 
   /**
@@ -1017,6 +1118,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // handle event window resize
   window.addEventListener("resize", function(){
+    console.log("resize")
     checkForShrinkMore();
   });
   
@@ -1055,10 +1157,14 @@ document.addEventListener("DOMContentLoaded", function() {
     subLevel2MobileClick(event);
     loginButtonClick(event);
     logoutButtonClick(event);
+    notificationsButtonClick(event);
+    notificationsMobileButtonClick(event);
+    notificationsMobileBackClick(event);
     secondaryLevel1Click(event);
     mobileNavSubMenuItemClick(event);
     secondaryLevel1MoreClick(event);
     userInfoContainerClick(event);
+    notificationsInfoContainerClick(event);
     moreButtonClick(event);
     switchBussinessWork(event)
   }, false);

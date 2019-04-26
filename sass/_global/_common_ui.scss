@@ -13,3 +13,68 @@
 .hide {
   display: none !important;
 }
+
+.desktop-hide {
+  display: none;
+}
+.desktop-show {
+  display: block;
+}
+//.flex-grid
+.flex-grid {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  &.item-start {
+    align-items: flex-start;
+  }
+}
+
+.icons {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* btn */
+.btn {
+  font-size: 18px;
+  font-weight: normal;
+  text-decoration: none;
+  border: none;
+  box-shadow: none;
+  position: relative;
+  text-transform: none;
+  font-weight: bold;
+  display: inline-block;
+  &.active, &:active, &:focus {
+    box-shadow: none;
+    outline: 0;
+  }
+}
+
+/* .btn-black */
+.btn-blue,
+.btn-blue:hover,
+.btn-blue:focus {
+  cursor: pointer;
+  height: 30px;
+  color: $white;
+  line-height: 30px;
+  border-radius: 15px;
+  padding: 1px 18px;
+  font-size: 14px;
+  @include Roboto-Bold;
+}
+
+.btn-blue:hover {
+  opacity: 0.75;
+}
+
+.btn-blue {
+  background-color: #2C95D7;
+  &.disabled,
+  &:disabled,
+  &[disabled] {
+    pointer-events: none;
+  }
+}

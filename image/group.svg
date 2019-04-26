@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 54.1 (76490) - https://sketchapp.com -->
+    <title>7F6028E1-A199-406E-9024-7979A1CE4209</title>
+    <desc>Created with sketchtool.</desc>
+    <g id="Community" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Notifications-Dropdown-Community" transform="translate(-429.000000, -2273.000000)" fill="#555555" fill-rule="nonzero">
+            <g id="group" transform="translate(429.000000, 2273.000000)">
+                <path d="M11,12 L1,12 C0.447,12 0,11.553 0,11 L0,1 C0,0.448 0.447,0 1,0 L11,0 C11.553,0 12,0.448 12,1 L12,11 C12,11.553 11.553,12 11,12 Z" id="Path"></path>
+                <path d="M15,16 L4,16 L4,14 L14,14 L14,4 L16,4 L16,15 C16,15.553 15.553,16 15,16 Z" id="Path"></path>
+            </g>
+        </g>
+    </g>
+</svg>
