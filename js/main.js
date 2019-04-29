@@ -428,15 +428,26 @@ document.addEventListener("DOMContentLoaded", function() {
    * @param {click event} event 
    */
   var showEmpty = true;
+  var shouldDismissNotification = false;
   function notificationsButtonClick(event) {
     var target = event.target;
     if (!target || !hasClass(target, 'notifi-image')) return;
+
+    if (shouldDismissNotification) {
+      removeClass(notificationPanelPopup, 'isNotificationsPopupOpen');
+      addClass(notificationPanelEmpty, "hide");
+      addClass(notificationPanelFull, "hide");
+      showEmpty = true;
+      shouldDismissNotification = false;
+      return;
+    }
     
     if (showEmpty) {
       addClass(notificationPanelPopup, 'isNotificationsPopupOpen');
       removeClass(notificationPanelEmpty, "hide");
       showEmpty = false;
     } else {
+      shouldDismissNotification = true;
       addClass(notificationPanelEmpty, "hide");
       addClass(notificationPanelPopup, 'isNotificationsPopupOpen');
       removeClass(notificationPanelFull, "hide");
