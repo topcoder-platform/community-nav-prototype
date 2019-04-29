@@ -346,7 +346,8 @@ body {
     border-radius: 10px;
     box-shadow: 0 5px 35px 5px rgba(21, 21, 22, 0.1), 0 10px 14px 0 rgba(21, 21, 22, 0.3);
     width: 480px;
-    height: auto;
+    height: 428px;
+    overflow: scroll;
     position: absolute;
     right: 10px;
     top: 40px;
