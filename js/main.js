@@ -450,7 +450,7 @@ document.addEventListener("DOMContentLoaded", function() {
   var showEmpty = true;
   function notificationsMobileButtonClick(event) {
     var target = event.target;
-    if (!target || !hasClass(target, 'notification-right-arrow')) return;
+    if (!target || !hasClass(target, 'notification-mobile')) return;
     
     if (showEmpty) {
       removeClass(notificationPanelEmptyMobile, "hide");
