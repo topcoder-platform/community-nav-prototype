@@ -1161,7 +1161,7 @@ document.addEventListener("DOMContentLoaded", function() {
   }, false);
 
   // handle click event
-  ['click', 'touchstart'].forEach((handle) => {
+  ['click', 'touchend'].forEach((handle) => {
     document.addEventListener(handle, function (event) {
       subLevel1Click(event);
       subLevel2Click(event);
