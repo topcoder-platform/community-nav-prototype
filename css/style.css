@@ -346,8 +346,7 @@ body {
     border-radius: 10px;
     box-shadow: 0 5px 35px 5px rgba(21, 21, 22, 0.1), 0 10px 14px 0 rgba(21, 21, 22, 0.3);
     width: 480px;
-    height: 428px;
-    overflow: scroll;
+    height: auto;
     position: absolute;
     right: 10px;
     top: 40px;
@@ -358,7 +357,9 @@ body {
       background-color: #0AB88A;
       border-radius: 10px 10px 0 0;
       padding: 10px 20px 10px;
-      height: 30px; }
+      height: 30px;
+      position: sticky;
+      top: 0; }
       .header-nav-ui .notifications-panel .noti-header .left-noti,
       .header-nav-ui .mobile-notifications-panel .noti-header .left-noti {
         background: url(../image/icon-bell.svg) left center no-repeat;
@@ -390,185 +391,189 @@ body {
         display: inline-block;
         vertical-align: middle;
         margin: auto 3px; }
-    .header-nav-ui .notifications-panel .noti-body .icon-bell,
-    .header-nav-ui .mobile-notifications-panel .noti-body .icon-bell {
-      background: url(../image/bell-big.svg) center center no-repeat;
-      background-size: 73px 80px;
-      width: 73px;
-      height: 80px;
-      margin: 50px 0 10px; }
-    .header-nav-ui .notifications-panel .noti-body.center,
-    .header-nav-ui .mobile-notifications-panel .noti-body.center {
-      text-align: center; }
-      .header-nav-ui .notifications-panel .noti-body.center .titles,
-      .header-nav-ui .mobile-notifications-panel .noti-body.center .titles {
-        color: #2A2A2B;
-        font-size: 30px;
-        font-family: 'Barlow Condensed';
-        font-weight: 600;
-        line-height: 40px;
-        margin: 23px 0 -8px 0; }
-      .header-nav-ui .notifications-panel .noti-body.center .txt,
-      .header-nav-ui .mobile-notifications-panel .noti-body.center .txt {
-        text-align: center;
-        padding: 19px 60px 12px 60px; }
-    .header-nav-ui .notifications-panel .noti-body .txt,
-    .header-nav-ui .mobile-notifications-panel .noti-body .txt {
-      margin: 0;
-      color: #2A2A2B;
-      font-size: 14px;
-      font-family: 'Roboto';
-      font-weight: 400;
-      line-height: 20px; }
-      .header-nav-ui .notifications-panel .noti-body .txt .blue-link,
-      .header-nav-ui .mobile-notifications-panel .noti-body .txt .blue-link {
-        color: #0596dc;
-        font-size: 14px; }
-    .header-nav-ui .notifications-panel .noti-body .light-bar,
-    .header-nav-ui .mobile-notifications-panel .noti-body .light-bar {
-      background-color: #B5E9DB;
-      height: 28px;
-      color: #229174;
-      font-size: 14px;
-      font-family: 'Roboto';
-      font-weight: 700;
-      line-height: 28px;
-      padding-left: 20px;
-      margin-top: -2px;
-      position: sticky;
-      position: -webkit-sticky;
-      top: 0;
-      z-index: 2;
-      padding-right: 20px;
-      padding-top: 2px; }
-    .header-nav-ui .notifications-panel .noti-body .greybar-section:last-child .items .item-content,
-    .header-nav-ui .mobile-notifications-panel .noti-body .greybar-section:last-child .items .item-content {
-      border-bottom: 0; }
-    .header-nav-ui .notifications-panel .noti-body .lightblue-section,
-    .header-nav-ui .notifications-panel .noti-body .greybar-section,
-    .header-nav-ui .mobile-notifications-panel .noti-body .lightblue-section,
-    .header-nav-ui .mobile-notifications-panel .noti-body .greybar-section {
-      margin-top: -2px;
-      background-color: #FFFFFF;
-      padding-top: 5px; }
-    .header-nav-ui .notifications-panel .noti-body .right-remove,
-    .header-nav-ui .mobile-notifications-panel .noti-body .right-remove {
-      position: absolute;
-      right: 1px;
-      top: 50%;
-      margin-top: -10px;
-      z-index: 666;
-      display: none; }
-      .header-nav-ui .notifications-panel .noti-body .right-remove .btn-close,
-      .header-nav-ui .mobile-notifications-panel .noti-body .right-remove .btn-close {
-        display: block;
-        background: url(../image/e-remove.svg) center center no-repeat;
-        background-size: 10px;
-        width: 20px;
-        height: 20px; }
-        .header-nav-ui .notifications-panel .noti-body .right-remove .btn-close:hover,
-        .header-nav-ui .mobile-notifications-panel .noti-body .right-remove .btn-close:hover {
-          background: url(../image/delete-small.svg) center center no-repeat; }
-      .header-nav-ui .notifications-panel .noti-body .right-remove .black-txt,
-      .header-nav-ui .mobile-notifications-panel .noti-body .right-remove .black-txt {
-        position: absolute;
-        top: -23px;
-        left: -46px;
-        background-color: #2A2A2B;
-        border-radius: 2px;
-        padding: 6px 0;
-        color: #FFFFFF;
-        font-size: 11px;
-        font-family: 'Roboto';
-        font-weight: 400;
-        line-height: 13px;
-        text-align: center;
-        min-width: 110px;
-        display: none; }
-        .header-nav-ui .notifications-panel .noti-body .right-remove .black-txt:after,
-        .header-nav-ui .mobile-notifications-panel .noti-body .right-remove .black-txt:after {
-          content: '';
-          display: block;
-          position: absolute;
-          bottom: -5px;
-          left: 50%;
-          margin-left: -3px;
-          width: 0;
-          height: 0;
-          border-left: 4px solid transparent;
-          border-right: 4px solid transparent;
-          border-top: 5px solid #2A2A2B; }
-      .header-nav-ui .notifications-panel .noti-body .right-remove:hover .black-txt,
-      .header-nav-ui .mobile-notifications-panel .noti-body .right-remove:hover .black-txt {
-        display: block; }
-    .header-nav-ui .notifications-panel .noti-body .items,
-    .header-nav-ui .mobile-notifications-panel .noti-body .items {
-      padding: 0 20px; }
-      .header-nav-ui .notifications-panel .noti-body .items:hover,
-      .header-nav-ui .mobile-notifications-panel .noti-body .items:hover {
-        background-color: #FBFBFB; }
-        .header-nav-ui .notifications-panel .noti-body .items:hover .right-remove,
-        .header-nav-ui .mobile-notifications-panel .noti-body .items:hover .right-remove {
-          display: block; }
-      .header-nav-ui .notifications-panel .noti-body .items .item-content,
-      .header-nav-ui .mobile-notifications-panel .noti-body .items .item-content {
-        padding: 4px;
-        border-bottom: 1px solid #E0E0E0;
-        position: relative; }
-        .header-nav-ui .notifications-panel .noti-body .items .item-content .txt,
-        .header-nav-ui .mobile-notifications-panel .noti-body .items .item-content .txt {
-          padding-right: 30px; }
-      .header-nav-ui .notifications-panel .noti-body .items .bottom-info,
-      .header-nav-ui .mobile-notifications-panel .noti-body .items .bottom-info {
-        margin-top: 6px; }
-        .header-nav-ui .notifications-panel .noti-body .items .bottom-info .blue-squre,
-        .header-nav-ui .mobile-notifications-panel .noti-body .items .bottom-info .blue-squre {
-          padding: 0px 10px;
-          display: inline-block;
-          margin-right: 6px;
-          background-color: #50ADE8;
-          border-radius: 5px;
-          color: #FFFFFF;
-          font-size: 12px;
-          font-family: 'Roboto';
-          font-weight: 400;
-          line-height: 20px; }
-        .header-nav-ui .notifications-panel .noti-body .items .bottom-info .time-txt,
-        .header-nav-ui .mobile-notifications-panel .noti-body .items .bottom-info .time-txt {
-          display: inline-block;
-          vertical-align: middle;
-          color: #AAA;
-          font-size: 12px;
-          font-family: 'Roboto';
-          font-weight: 400;
-          line-height: 20px; }
-    .header-nav-ui .notifications-panel .noti-body .grey-bar,
-    .header-nav-ui .mobile-notifications-panel .noti-body .grey-bar {
-      background-color: #F4F4F4;
-      height: 50px;
-      padding-left: 20px;
-      margin-top: -4px;
-      z-index: 1;
-      position: relative; }
-      .header-nav-ui .notifications-panel .noti-body .grey-bar .copyicon-title,
-      .header-nav-ui .mobile-notifications-panel .noti-body .grey-bar .copyicon-title {
-        padding-left: 30px;
-        background: url(../image/group.svg) left center no-repeat;
-        background-size: 14px;
+    .header-nav-ui .notifications-panel .noti-body,
+    .header-nav-ui .mobile-notifications-panel .noti-body {
+      max-height: 378px;
+      overflow: scroll; }
+      .header-nav-ui .notifications-panel .noti-body .icon-bell,
+      .header-nav-ui .mobile-notifications-panel .noti-body .icon-bell {
+        background: url(../image/bell-big.svg) center center no-repeat;
+        background-size: 73px 80px;
+        width: 73px;
+        height: 80px;
+        margin: 50px 0 10px; }
+      .header-nav-ui .notifications-panel .noti-body.center,
+      .header-nav-ui .mobile-notifications-panel .noti-body.center {
+        text-align: center; }
+        .header-nav-ui .notifications-panel .noti-body.center .titles,
+        .header-nav-ui .mobile-notifications-panel .noti-body.center .titles {
+          color: #2A2A2B;
+          font-size: 30px;
+          font-family: 'Barlow Condensed';
+          font-weight: 600;
+          line-height: 40px;
+          margin: 23px 0 -8px 0; }
+        .header-nav-ui .notifications-panel .noti-body.center .txt,
+        .header-nav-ui .mobile-notifications-panel .noti-body.center .txt {
+          text-align: center;
+          padding: 19px 60px 12px 60px; }
+      .header-nav-ui .notifications-panel .noti-body .txt,
+      .header-nav-ui .mobile-notifications-panel .noti-body .txt {
+        margin: 0;
         color: #2A2A2B;
         font-size: 14px;
         font-family: 'Roboto';
+        font-weight: 400;
+        line-height: 20px; }
+        .header-nav-ui .notifications-panel .noti-body .txt .blue-link,
+        .header-nav-ui .mobile-notifications-panel .noti-body .txt .blue-link {
+          color: #0596dc;
+          font-size: 14px; }
+      .header-nav-ui .notifications-panel .noti-body .light-bar,
+      .header-nav-ui .mobile-notifications-panel .noti-body .light-bar {
+        background-color: #B5E9DB;
+        height: 28px;
+        color: #229174;
+        font-size: 14px;
+        font-family: 'Roboto';
         font-weight: 700;
-        width: calc(100% - 70px);
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap; }
-      .header-nav-ui .notifications-panel .noti-body .grey-bar .right-remove,
-      .header-nav-ui .mobile-notifications-panel .noti-body .grey-bar .right-remove {
-        right: 20px; }
-      .header-nav-ui .notifications-panel .noti-body .grey-bar:hover .right-remove,
-      .header-nav-ui .mobile-notifications-panel .noti-body .grey-bar:hover .right-remove {
-        display: block; }
+        line-height: 28px;
+        padding-left: 20px;
+        margin-top: -2px;
+        position: sticky;
+        position: -webkit-sticky;
+        top: 0;
+        z-index: 2;
+        padding-right: 20px;
+        padding-top: 2px; }
+      .header-nav-ui .notifications-panel .noti-body .greybar-section:last-child .items .item-content,
+      .header-nav-ui .mobile-notifications-panel .noti-body .greybar-section:last-child .items .item-content {
+        border-bottom: 0; }
+      .header-nav-ui .notifications-panel .noti-body .lightblue-section,
+      .header-nav-ui .notifications-panel .noti-body .greybar-section,
+      .header-nav-ui .mobile-notifications-panel .noti-body .lightblue-section,
+      .header-nav-ui .mobile-notifications-panel .noti-body .greybar-section {
+        margin-top: -2px;
+        background-color: #FFFFFF;
+        padding-top: 5px; }
+      .header-nav-ui .notifications-panel .noti-body .right-remove,
+      .header-nav-ui .mobile-notifications-panel .noti-body .right-remove {
+        position: absolute;
+        right: 1px;
+        top: 50%;
+        margin-top: -10px;
+        z-index: 666;
+        display: none; }
+        .header-nav-ui .notifications-panel .noti-body .right-remove .btn-close,
+        .header-nav-ui .mobile-notifications-panel .noti-body .right-remove .btn-close {
+          display: block;
+          background: url(../image/e-remove.svg) center center no-repeat;
+          background-size: 10px;
+          width: 20px;
+          height: 20px; }
+          .header-nav-ui .notifications-panel .noti-body .right-remove .btn-close:hover,
+          .header-nav-ui .mobile-notifications-panel .noti-body .right-remove .btn-close:hover {
+            background: url(../image/delete-small.svg) center center no-repeat; }
+        .header-nav-ui .notifications-panel .noti-body .right-remove .black-txt,
+        .header-nav-ui .mobile-notifications-panel .noti-body .right-remove .black-txt {
+          position: absolute;
+          top: -23px;
+          left: -46px;
+          background-color: #2A2A2B;
+          border-radius: 2px;
+          padding: 6px 0;
+          color: #FFFFFF;
+          font-size: 11px;
+          font-family: 'Roboto';
+          font-weight: 400;
+          line-height: 13px;
+          text-align: center;
+          min-width: 110px;
+          display: none; }
+          .header-nav-ui .notifications-panel .noti-body .right-remove .black-txt:after,
+          .header-nav-ui .mobile-notifications-panel .noti-body .right-remove .black-txt:after {
+            content: '';
+            display: block;
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            margin-left: -3px;
+            width: 0;
+            height: 0;
+            border-left: 4px solid transparent;
+            border-right: 4px solid transparent;
+            border-top: 5px solid #2A2A2B; }
+        .header-nav-ui .notifications-panel .noti-body .right-remove:hover .black-txt,
+        .header-nav-ui .mobile-notifications-panel .noti-body .right-remove:hover .black-txt {
+          display: block; }
+      .header-nav-ui .notifications-panel .noti-body .items,
+      .header-nav-ui .mobile-notifications-panel .noti-body .items {
+        padding: 0 20px; }
+        .header-nav-ui .notifications-panel .noti-body .items:hover,
+        .header-nav-ui .mobile-notifications-panel .noti-body .items:hover {
+          background-color: #FBFBFB; }
+          .header-nav-ui .notifications-panel .noti-body .items:hover .right-remove,
+          .header-nav-ui .mobile-notifications-panel .noti-body .items:hover .right-remove {
+            display: block; }
+        .header-nav-ui .notifications-panel .noti-body .items .item-content,
+        .header-nav-ui .mobile-notifications-panel .noti-body .items .item-content {
+          padding: 4px;
+          border-bottom: 1px solid #E0E0E0;
+          position: relative; }
+          .header-nav-ui .notifications-panel .noti-body .items .item-content .txt,
+          .header-nav-ui .mobile-notifications-panel .noti-body .items .item-content .txt {
+            padding-right: 30px; }
+        .header-nav-ui .notifications-panel .noti-body .items .bottom-info,
+        .header-nav-ui .mobile-notifications-panel .noti-body .items .bottom-info {
+          margin-top: 6px; }
+          .header-nav-ui .notifications-panel .noti-body .items .bottom-info .blue-squre,
+          .header-nav-ui .mobile-notifications-panel .noti-body .items .bottom-info .blue-squre {
+            padding: 0px 10px;
+            display: inline-block;
+            margin-right: 6px;
+            background-color: #50ADE8;
+            border-radius: 5px;
+            color: #FFFFFF;
+            font-size: 12px;
+            font-family: 'Roboto';
+            font-weight: 400;
+            line-height: 20px; }
+          .header-nav-ui .notifications-panel .noti-body .items .bottom-info .time-txt,
+          .header-nav-ui .mobile-notifications-panel .noti-body .items .bottom-info .time-txt {
+            display: inline-block;
+            vertical-align: middle;
+            color: #AAA;
+            font-size: 12px;
+            font-family: 'Roboto';
+            font-weight: 400;
+            line-height: 20px; }
+      .header-nav-ui .notifications-panel .noti-body .grey-bar,
+      .header-nav-ui .mobile-notifications-panel .noti-body .grey-bar {
+        background-color: #F4F4F4;
+        height: 50px;
+        padding-left: 20px;
+        margin-top: -4px;
+        z-index: 1;
+        position: relative; }
+        .header-nav-ui .notifications-panel .noti-body .grey-bar .copyicon-title,
+        .header-nav-ui .mobile-notifications-panel .noti-body .grey-bar .copyicon-title {
+          padding-left: 30px;
+          background: url(../image/group.svg) left center no-repeat;
+          background-size: 14px;
+          color: #2A2A2B;
+          font-size: 14px;
+          font-family: 'Roboto';
+          font-weight: 700;
+          width: calc(100% - 70px);
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap; }
+        .header-nav-ui .notifications-panel .noti-body .grey-bar .right-remove,
+        .header-nav-ui .mobile-notifications-panel .noti-body .grey-bar .right-remove {
+          right: 20px; }
+        .header-nav-ui .notifications-panel .noti-body .grey-bar:hover .right-remove,
+        .header-nav-ui .mobile-notifications-panel .noti-body .grey-bar:hover .right-remove {
+          display: block; }
     .header-nav-ui .notifications-panel .noti-footer,
     .header-nav-ui .mobile-notifications-panel .noti-footer {
       text-align: center;

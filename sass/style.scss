@@ -376,8 +376,7 @@ body {
     border-radius: 10px;
     box-shadow: 0 5px 35px 5px rgba(21, 21, 22, 0.1), 0 10px 14px 0 rgba(21, 21, 22, 0.3);
     width: 480px;
-    height: 428px;
-    overflow: scroll;
+    height: auto;
     position: absolute;
     right: 10px;
     top: 40px;
@@ -388,6 +387,8 @@ body {
       border-radius: 10px 10px 0 0;
       padding: 10px 20px 10px;
       height: 30px;
+      position: sticky;
+      top: 0;
       .left-noti {
         background: url(../image/icon-bell.svg) left center no-repeat;
         background-size: 16px;
@@ -422,6 +423,8 @@ body {
       }
     }
     .noti-body {
+      max-height: 378px;
+      overflow: scroll;
       .icon-bell {
         background: url(../image/bell-big.svg)center center no-repeat;
         background-size: 73px 80px;
