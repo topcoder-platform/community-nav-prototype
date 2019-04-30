@@ -1161,24 +1161,27 @@ document.addEventListener("DOMContentLoaded", function() {
   }, false);
 
   // handle click event
-  document.addEventListener('click', function (event) {
-    subLevel1Click(event);
-    subLevel2Click(event);
-    subLevel2MoreClick(event);
-    subLevel2MobileClick(event);
-    loginButtonClick(event);
-    logoutButtonClick(event);
-    notificationsButtonClick(event);
-    notificationsMobileButtonClick(event);
-    notificationsMobileBackClick(event);
-    secondaryLevel1Click(event);
-    mobileNavSubMenuItemClick(event);
-    secondaryLevel1MoreClick(event);
-    userInfoContainerClick(event);
-    notificationsInfoContainerClick(event);
-    moreButtonClick(event);
-    switchBussinessWork(event)
-  }, false);
+  ['click', 'touchstart'].forEach((handle) => {
+    document.addEventListener(handle, function (event) {
+      subLevel1Click(event);
+      subLevel2Click(event);
+      subLevel2MoreClick(event);
+      subLevel2MobileClick(event);
+      loginButtonClick(event);
+      logoutButtonClick(event);
+      notificationsButtonClick(event);
+      notificationsMobileButtonClick(event);
+      notificationsMobileBackClick(event);
+      secondaryLevel1Click(event);
+      mobileNavSubMenuItemClick(event);
+      secondaryLevel1MoreClick(event);
+      userInfoContainerClick(event);
+      notificationsInfoContainerClick(event);
+      moreButtonClick(event);
+      switchBussinessWork(event)
+    }, false);
+  })
+  
 
   /**
    * resize the navigation menu (if needed) when hovering avatar

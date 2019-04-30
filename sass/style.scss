@@ -463,7 +463,9 @@ body {
         line-height: 28px;
         padding-left: 20px;
         margin-top: -2px;
-        position: relative;
+        position: sticky;
+        position: -webkit-sticky;
+        top: 0;
         z-index: 2;
         padding-right: 20px;
         padding-top: 2px;
@@ -1142,16 +1144,6 @@ body {
       top: 0;
       right: 0;
       overflow-y: auto;
-      &.fixTop {
-        .fixed-bar {
-          position: fixed;
-          width: 100%;
-          top: 0;
-          .green-link {
-            margin-right: 40px;
-          }
-        }
-      }
       .noti-header {
         height: 30px;
         border-radius: 0;
