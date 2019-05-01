@@ -435,15 +435,26 @@ document.addEventListener("DOMContentLoaded", function() {
    * @param {click event} event
    */
   var showEmpty = true;
+  var shouldDismissNotification = false;
   function notificationsButtonClick(event) {
     var target = event.target;
     if (!target || !hasClass(target, 'notifi-image')) return;
 
+    if (shouldDismissNotification) {
+      removeClass(notificationPanelPopup, 'isNotificationsPopupOpen');
+      addClass(notificationPanelEmpty, "hide");
+      addClass(notificationPanelFull, "hide");
+      showEmpty = true;
+      shouldDismissNotification = false;
+      return;
+    }
+    
     if (showEmpty) {
       addClass(notificationPanelPopup, 'isNotificationsPopupOpen');
       removeClass(notificationPanelEmpty, "hide");
       showEmpty = false;
     } else {
+      shouldDismissNotification = true;
       addClass(notificationPanelEmpty, "hide");
       addClass(notificationPanelPopup, 'isNotificationsPopupOpen');
       removeClass(notificationPanelFull, "hide");
@@ -457,8 +468,11 @@ document.addEventListener("DOMContentLoaded", function() {
   var showEmpty = true;
   function notificationsMobileButtonClick(event) {
     var target = event.target;
+
     if (!target || !hasClass(target, 'notification-right-arrow')) return;
 
+    if (!target || !hasClass(target, 'notification-mobile')) return;
+    
     if (showEmpty) {
       removeClass(notificationPanelEmptyMobile, "hide");
       showEmpty = false;
@@ -1263,24 +1277,27 @@ document.addEventListener("DOMContentLoaded", function() {
   }, false);
 
   // handle click event
-  document.addEventListener('click', function (event) {
-    subLevel1Click(event);
-    subLevel2Click(event);
-    subLevel2MoreClick(event);
-    subLevel2MobileClick(event);
-    loginButtonClick(event);
-    logoutButtonClick(event);
-    notificationsButtonClick(event);
-    notificationsMobileButtonClick(event);
-    notificationsMobileBackClick(event);
-    secondaryLevel1Click(event);
-    mobileNavSubMenuItemClick(event);
-    secondaryLevel1MoreClick(event);
-    userInfoContainerClick(event);
-    notificationsInfoContainerClick(event);
-    moreButtonClick(event);
-    switchBussinessWork(event)
-  }, false);
+  ['click', 'touchend'].forEach((handle) => {
+    document.addEventListener(handle, function (event) {
+      subLevel1Click(event);
+      subLevel2Click(event);
+      subLevel2MoreClick(event);
+      subLevel2MobileClick(event);
+      loginButtonClick(event);
+      logoutButtonClick(event);
+      notificationsButtonClick(event);
+      notificationsMobileButtonClick(event);
+      notificationsMobileBackClick(event);
+      secondaryLevel1Click(event);
+      mobileNavSubMenuItemClick(event);
+      secondaryLevel1MoreClick(event);
+      userInfoContainerClick(event);
+      notificationsInfoContainerClick(event);
+      moreButtonClick(event);
+      switchBussinessWork(event)
+    }, false);
+  })
+  
 
   /**
    * resize the navigation menu (if needed) when hovering avatar
