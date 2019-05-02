@@ -1,3 +1,4 @@
+const SECONDARY_NAVBAR_HEIGHT = 60; //px
 /**
  * Get offset of element
  * @param {HTMLElement} el Dom element
@@ -27,9 +28,9 @@ function removeClass(el, classname) {
 
 /**
  * Set attribute
- * @param {HTMLElement | HTMLElement[]} el 
- * @param {string} key 
- * @param {string} value 
+ * @param {HTMLElement | HTMLElement[]} el
+ * @param {string} key
+ * @param {string} value
  * @return {HTMLElement | HTMLElement[]}
  */
 function setAttribute(el, key, value) {
@@ -40,7 +41,7 @@ function setAttribute(el, key, value) {
 
 /**
  * Set html
- * @param {HTMLElement | HTMLElement[]} el 
+ * @param {HTMLElement | HTMLElement[]} el
  * @param {string} html
  * @return {HTMLElement | HTMLElement[]}
  */
@@ -52,8 +53,8 @@ function setHTML(el, html) {
 
 /**
  * Add class to element
- * @param {HTMLElement | HTMLElement[]} el 
- * @param {string} classname 
+ * @param {HTMLElement | HTMLElement[]} el
+ * @param {string} classname
  * @return {HTMLElement | HTMLElement[]}
  */
 function addClass(el, classname) {
@@ -64,8 +65,8 @@ function addClass(el, classname) {
 
 /**
  * Toggle class to element
- * @param {HTMLElement | HTMLElement[]} el 
- * @param {string} classname 
+ * @param {HTMLElement | HTMLElement[]} el
+ * @param {string} classname
  * @return {HTMLElement | HTMLElement[]}
  */
 function toggleClass(el, classname) {
@@ -76,8 +77,8 @@ function toggleClass(el, classname) {
 
 /**
  * Check if element has class
- * @param {HTMLElement} el 
- * @param {string} classname 
+ * @param {HTMLElement} el
+ * @param {string} classname
  * @return {boolean}
  */
 function hasClass(el, classname) {
@@ -90,9 +91,9 @@ function hasClass(el, classname) {
 
 /**
  * Iterate all elements
- * 
+ *
  * @param {HTMLElement | HTMLElement[]} el
- * @param {callback} cb 
+ * @param {callback} cb
  * @return {HTMLElement | HTMLElement[]}
  */
 function iterateElement(el, cb) {
@@ -117,7 +118,7 @@ function iterateElement(el, cb) {
 
 /**
  * Get list closest child of the element
- * @param {HTMLElement} el 
+ * @param {HTMLElement} el
  * @return {HTMLElement[]}
  */
 function getTheClosestChild(el) {
@@ -125,7 +126,7 @@ function getTheClosestChild(el) {
   for (var i=0; i<el.childNodes.length; i++) {
     var child = el.childNodes[i];
     if (child.nodeType == 1) {
-      elements.push(child)      
+      elements.push(child)
     }
   }
   return elements;
@@ -133,8 +134,8 @@ function getTheClosestChild(el) {
 
 /**
  * Get distance between 2 elements
- * @param {HTMLElement} el1 
- * @param {HTMLElement} el2 
+ * @param {HTMLElement} el1
+ * @param {HTMLElement} el2
  * @return {number} The distance
  */
 function getDistance(el1, el2) {
@@ -152,7 +153,7 @@ function getDistance(el1, el2) {
 
 /**
  * Remove element
- * @param {HTMLElement | HTMLElement[]} el 
+ * @param {HTMLElement | HTMLElement[]} el
  */
 function removeItem(el) {
   return iterateElement(el, function(elIterate){
@@ -170,7 +171,6 @@ function isHidden(el) {
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-
   var spaceForShrinkMore = 100; // use for control the distance to the left, if the distance less then this then shrink the menu
   var headerNavUi = document.querySelectorAll('.header-nav-ui')[0];
   var primaryNav = headerNavUi.querySelectorAll('.primary-nav')[0];
@@ -183,6 +183,11 @@ document.addEventListener("DOMContentLoaded", function() {
   var previousSelectElementDesktop = null;
   var previousLevel2ItemSelectElement = null;
   var selectingLevel1ClassKey = null;
+  var notificationPanelPopup = document.querySelectorAll('.notification-popup')[0];
+  var notificationPanelEmpty = document.querySelectorAll('.notifications-panel')[0];
+  var notificationPanelFull = document.querySelectorAll('.notifications-panel')[1];
+  var notificationPanelEmptyMobile = document.querySelectorAll('.mobile-notifications-panel')[0];
+  var notificationPanelFullMobile = document.querySelectorAll('.mobile-notifications-panel')[1];
 
   /**
    * create nav from json object
@@ -214,8 +219,9 @@ document.addEventListener("DOMContentLoaded", function() {
         addClass(primaryLevel1Item, 'more-menu');
         continue;
       }
-      
+
       var primaryLevel2ContainerItem = primaryLevel2Container.cloneNode(true);
+      setAttribute(primaryLevel2ContainerItem, 'key', value);
       addClass(removeClass(primaryLevel2ContainerItem, 'hide'), 'copied');
       primaryNav.insertBefore(primaryLevel2ContainerItem, loginBtn);
       // create primary menu level 2
@@ -253,7 +259,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   /**
    * Populate secondary memu items
-   * @param {HTMLElement} target 
+   * @param {HTMLElement} target
    */
   function populateSecondaryNavMobile(target) {
     var indexLevel1 = target.getAttribute('indexLevel1');
@@ -365,7 +371,7 @@ document.addEventListener("DOMContentLoaded", function() {
       menu.appendChild(secondaryLevel1Item);
     }
   }
-  
+
   /**
    * logout user
    * @param {click event} event event for logout button click
@@ -381,21 +387,27 @@ document.addEventListener("DOMContentLoaded", function() {
 
   /**
    * Animation for moving arrow to target
-   * @param {number} offsetX 
-   * @param {HTMLElement} arrow 
-   * @param {HTMLElement} element 
+   * @param {number} offsetX
+   * @param {HTMLElement} arrow
+   * @param {HTMLElement} element
    */
   function moveArrowTo(offsetX, arrow, element) {
     if (element) {
       var arrowOffset = offset(element);
-      var arrowX = offsetX + arrowOffset.left + (element.offsetWidth - arrow.offsetWidth)/2;
-      arrow.style.transform = "translate3d(" + arrowX + "px, 0, 0)";
+      var arrowoffsetwidth = arrow.offsetWidth;
+      if (getComputedStyle(arrow).display == 'none') {
+        arrow.style.display = 'block';
+        arrowoffsetwidth = arrow.offsetWidth;
+        arrow.style.display = 'none';
+      }
+      var arrowX = offsetX + arrowOffset.left + (element.offsetWidth - arrowoffsetwidth)/2;
+      arrow.style.transform = "translateX(" + arrowX + "px)";
     }
   }
 
   /**
-   * Login 
-   * @param {click event} event 
+   * Login
+   * @param {click event} event
    */
   function loginButtonClick(event) {
     var target = event.target;
@@ -406,8 +418,118 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   /**
-   * Switch to BUSSINESS or WORK 
-   * @param {click event} event 
+   * Scroll the mobile notification popup
+   * @param {click event} event
+   */
+  document.getElementsByClassName('mobile-notifications-panel')[1].addEventListener("scroll", function(){
+    console.log("scroll")
+    if(document.getElementsByClassName('mobile-notifications-panel')[1].scrollTop >= 50) {
+      addClass(notificationPanelFullMobile, "fixTop");
+    } else {
+      removeClass(notificationPanelFullMobile, "fixTop");
+    }
+  });
+
+  /**
+   * Notifications
+   * @param {click event} event
+   */
+  var showEmpty = true;
+  var shouldDismissNotification = false;
+  function notificationsButtonClick(event) {
+    var target = event.target;
+    if (!target || !hasClass(target, 'notifi-image')) return;
+
+    if (shouldDismissNotification) {
+      removeClass(notificationPanelPopup, 'isNotificationsPopupOpen');
+      addClass(notificationPanelEmpty, "hide");
+      addClass(notificationPanelFull, "hide");
+      showEmpty = true;
+      shouldDismissNotification = false;
+      return;
+    }
+    
+    if (showEmpty) {
+      addClass(notificationPanelPopup, 'isNotificationsPopupOpen');
+      removeClass(notificationPanelEmpty, "hide");
+      showEmpty = false;
+    } else {
+      shouldDismissNotification = true;
+      addClass(notificationPanelEmpty, "hide");
+      addClass(notificationPanelPopup, 'isNotificationsPopupOpen');
+      removeClass(notificationPanelFull, "hide");
+    }
+  }
+
+  /**
+   * Mobile Notifications
+   * @param {click event} event
+   */
+  var showEmpty = true;
+  function notificationsMobileButtonClick(event) {
+    var target = event.target;
+    
+    var userInfoPopup = document.querySelectorAll('.user-info-popup-mobile')[0];
+    var notificationLink = document.querySelectorAll('.user-info-popup-mobile .notification-mobile')[0];
+    if (isHidden(userInfoPopup) || !notificationLink.contains(target)) return;
+    
+    if (showEmpty) {
+      removeClass(notificationPanelEmptyMobile, "hide");
+      showEmpty = false;
+    } else {
+      removeClass(notificationPanelFullMobile, "hide");
+    }
+  }
+
+  /**
+   * Close Mobile Notifications
+   * @param {click event} event
+   */
+  var showEmpty = true;
+  function notificationsMobileBackClick(event) {
+    var target = event.target;
+    if (!target || !hasClass(target, 'notification-back-btn')) return;
+
+    addClass(notificationPanelEmptyMobile, "hide");
+    addClass(notificationPanelFullMobile, "hide");
+  }
+
+  /**
+   * Show popup notifications info
+   * @param {click event} event
+   */
+  function notificationsInfoContainerClick(event) {
+    var isSelected = false;
+    var target = event.target;
+    if (!target) {
+      return;
+    }
+    iterateElement(document.querySelectorAll('.notifications-panel'), function(el) {
+      if (el.contains(target)) {
+        isSelected = true;
+      }
+    });
+    if (isSelected) {
+      event.preventDefault();
+    } else {
+      clickOutsideToClosePopupNotifications(event);
+    }
+  }
+
+  /**
+   * click outside to hide popup notifications
+   * @param {click event} event
+   */
+  function clickOutsideToClosePopupNotifications(event) {
+    var notificationPanelPopup = document.querySelectorAll('.header-nav-ui .notification-popup')[0];
+    if (!isHidden(notificationPanelPopup) && !notificationPanelPopup.contains(event.target)) {
+      removeClass(notificationPanelPopup, 'isNotificationsPopupOpen');
+    }
+  }
+
+  /**
+   * Switch to BUSSINESS or WORK
+   * @param {click event} event
    */
 
   function switchBussinessWork(event) {
@@ -438,7 +560,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
   }
-  
+
   /**
    * move primary arrow to target
    * @param {number} xOffset
@@ -463,23 +585,37 @@ document.addEventListener("DOMContentLoaded", function() {
     } else if (target.innerHTML === 'WORK') {
       document.getElementsByClassName('switch-to-busniness')[0].innerHTML = 'Switch to BUSINESS'
     }
-  
+
+    var menus = getPrimaryMenuItems();
+    //All items are in initial state here
+    var initial = menus.map(menu => offset(menu.domNode))
+
     polulateSecondaryNavMobile(target);
     var classKey = target.getAttribute('key');
     removeClass(document.getElementsByClassName('primary-level-2-container'), "isOpen");
     removeClass(removeClass(primaryNav.getElementsByClassName('primary-level-1'), "isOpen"), "isOpenSubmenu");
     removeClass(primaryNav.querySelectorAll('.primary-level-2-container a'), "isOpen");
 
-    var subList = target.nextElementSibling;
-    while (subList && !hasClass(subList, 'primary-level-2-container')) {
-      subList = subList.nextElementSibling;
-    }
+    subList = document.querySelector(".primary-level-2-container[key="+classKey+"]");
+    // var subList = target.nextElementSibling;
+    // while (subList && !hasClass(subList, 'primary-level-2-container')) {
+    //   subList = subList.nextElementSibling;
+    // }
+    //All items are in initial state here
+
     addClass(subList, "isOpen");
     addClass(target, "isOpen");
 
+    //All items are in their final position here
+    var final = menus.map(menu => offset(menu.domNode))
+
     movePrimaryArrowTo(0, target);
+
     populateSecondaryNav();
     checkForShrinkMore();
+    slideElements(menus, final, initial);
+    fadeInElement(subList);
+
 
     if (classKey !== 'MORE') {
       previousSelectElementDesktop = target;
@@ -492,8 +628,62 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   /**
+   * Get all level 1 menu items that are clicked in order to expand submenus
+   */
+  function getPrimaryMenuItems() {
+    var ans = []
+    var menus = document.querySelectorAll(".primary-level-1:not(.hide)")
+    menus.forEach(function(el) {
+      if (getComputedStyle(el).display != "none") {
+        ans.push({domNode: el})
+      }
+    })
+    return ans;
+  }
+
+  /**
+   * Slide elements from inital to final position
+   * @param {[{domNode: HTMLElement}]} listOfElementsToSlide Output of the function
+                                        getPrimaryMenuItems defined in this file
+   * @param {offset object} inital Output of the function offset defined in this file
+   * @param {offset object} final
+   */
+  function slideElements(menus, initial, final) {
+    menus.forEach((menu, i) => {
+      var element = menu.domNode;
+      var initialoffset = Math.floor(final[i].left - initial[i].left);
+      if (initialoffset != 0) {
+        element.style.transform = "translateX(" + initialoffset + "px)";
+        setTimeout(() => {
+          element.style.transition = "transform 250ms ease-out";
+          element.style.transform = "translateX(0)";
+          setTimeout(() => {
+            element.style.transition = "";
+            element.style.transform = "";
+          }, 250)
+        }, 0)
+      }
+    })
+  }
+
+  /**
+   * set opacity of element to 0 and then fade it in over 500ms
+   * @param {HTMLElement} subList
+   */
+  function fadeInElement(element) {
+    addClass(element, 'opacity-0');
+    setTimeout(() => {
+      addClass(element, 'fade-opacity-in');
+      setTimeout(() => {
+        removeClass(element, 'fade-opacity-in');
+        removeClass(element, 'opacity-0');
+      }, 500)
+    })
+  }
+
+  /**
    * submenu level 1 click
-   * @param {click event} event 
+   * @param {click event} event
    */
   function subLevel1Click(event) {
     var target = event.target;
@@ -506,14 +696,16 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     // make height of secondaryNav as 0, since top level Menu item is clicked
-    var secondaryNav = document.querySelectorAll('.secondary-nav')[0];
-    $(secondaryNav).css("height", "0px");
+    animateSubLevel2Foldup()
+    .then(() => {
+      var secondaryNav = document.querySelectorAll('.secondary-nav')[0];
+      $(secondaryNav).css("height", "0px");
 
-    var iconChooseArrow = document.querySelectorAll('.icon-chosen-arrow')[0];
-    $(iconChooseArrow).css("display", "block");
+      var iconChooseArrow = document.querySelectorAll('.icon-chosen-arrow')[0];
+      $(iconChooseArrow).css("display", "block");
 
-    removeSecondaryNavBackground();
-
+      removeSecondaryNavBackground();
+    })
     forceClickToSublevel1(target);
     event.preventDefault();
   }
@@ -527,6 +719,22 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   /**
+   * Animate the secondarynavbar element to slide up under the primary navbar element
+   */
+  function animateSubLevel2Foldup() {
+    return new Promise((resolve, reject) => {
+      element = secondaryNav;
+      element.style.transition = "transform 250ms linear";
+      element.style.transform = "translateY(-"+ SECONDARY_NAVBAR_HEIGHT + "px)";
+      setTimeout(() => {
+        element.style.transition = "";
+        element.style.transform = "";
+        resolve();
+     }, 250)
+    })
+  }
+
+  /**
    * Update ui when click to sub level 2 item
    * @param {HTMLElement} target item sub level 2
    */
@@ -534,7 +742,7 @@ document.addEventListener("DOMContentLoaded", function() {
     if (!target) {
       return;
     }
-    
+
     var classKey = target.getAttribute('key');
     addClass(primaryNav.querySelectorAll('.primary-level-1.isOpen'), "isOpenSubmenu");
     var visibleMoreItemSelector = ".primary-level-2-container.isOpen .more-btn-container .more-content-container a:not(.hide)[key='" + classKey + "']";
@@ -557,7 +765,7 @@ document.addEventListener("DOMContentLoaded", function() {
       previousLevel2ItemSelectElement = target;
     }
   }
-  
+
   function closeMorePopup() {
     iterateElement(document.querySelectorAll('.more-content-container'), function(moreContentItem) {
       removeClass(moreContentItem.parentNode, 'isOpen');
@@ -566,7 +774,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   /**
    * event for sub level 2 more item click
-   * @param {click event} event 
+   * @param {click event} event
    */
   function subLevel2MoreClick(event) {
     var target = event.target;
@@ -579,24 +787,44 @@ document.addEventListener("DOMContentLoaded", function() {
 
   /**
    * event for sub level 2 item click
-   * @param {click event} event 
+   * @param {click event} event
    */
   function subLevel2Click(event) {
     var target = event.target;
     if (!target || !(hasClass(target, 'primary-level-2') || hasClass(target, 'primary-level-2-more'))) return;
-    
+
     // make height of subMenu to 60px
     var secondaryNav = document.querySelectorAll('.secondary-nav')[0];
-    $(secondaryNav).css("height", "60px");
+    $(secondaryNav).css("height", SECONDARY_NAVBAR_HEIGHT+"px");
 
+    var animateDropdown = hasClass(secondaryNav, 'hide');
     addSecondaryNavBackground();
     forceClickToSubLevel2(target);
+    if (animateDropdown) {
+      animateSubLevel2Drop();
+    }
     event.preventDefault();
   }
-  
+
+  /**
+   * Animate the secondary navbar to slid down when shown
+   */
+  function animateSubLevel2Drop() {
+    element = secondaryNav;
+    element.style.transform = "translateY(-" + SECONDARY_NAVBAR_HEIGHT + "px)";
+    setTimeout(() => {
+      element.style.transition = "transform 250ms linear";
+      element.style.transform = "translateY(0)";
+      setTimeout(() => {
+        element.style.transition = "";
+        element.style.transform = "";
+      }, 250)
+    }, 0)
+  }
+
   /**
    * event for sub level 2 mobile item click
-   * @param {click event} event 
+   * @param {click event} event
    */
   function subLevel2MobileClick(event) {
     var target = event.target;
@@ -607,7 +835,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     removeClass(headerNavUi, 'isOpenSecondaryNavMobile');
   }
-  
+
   /**
    * move secondary arrow to target
    * @param {number} xOffset
@@ -631,7 +859,7 @@ document.addEventListener("DOMContentLoaded", function() {
     removeClass(secondaryNavLinkContainer.getElementsByClassName('secondary-level-1-more'), "isOpen");
     removeClass(mobileNavSubMenu.querySelectorAll('.menu a'), "isOpen");
     var classKey = target.getAttribute('key');
-    
+
     var secondaryLevel1Selector = "a.secondary-level-1[key='" + classKey + "']";
     var secondaryLevel1 = secondaryNavLinkContainer.querySelectorAll(secondaryLevel1Selector);
     var secondaryLevel1MoreSelector = "a.secondary-level-1-more[key='" + classKey + "']";
@@ -652,7 +880,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   /**
    * secondary level 1 more item click
-   * @param {click event} event 
+   * @param {click event} event
    */
   function secondaryLevel1MoreClick(event) {
     var target = event.target;
@@ -665,14 +893,14 @@ document.addEventListener("DOMContentLoaded", function() {
 
   /**
    * secondary level 1 item click
-   * @param {click event} event 
+   * @param {click event} event
    */
   function secondaryLevel1Click(event) {
     var target = event.target;
     if (!target || !hasClass(target, 'secondary-level-1') ) return;
 
     // make height of subMenu to 60px
-    $($(target).parent()).parent().css("height", "60px"); 
+    $($(target).parent()).parent().css("height", "60px");
 
     addSecondaryNavBackground();
     forceSecondaryLevel1Click(target);
@@ -682,7 +910,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   /**
    * nav sub menu item click
-   * @param {click event} event 
+   * @param {click event} event
    */
   function mobileNavSubMenuItemClick(event) {
     var target = event.target;
@@ -693,10 +921,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
     event.preventDefault();
   }
-  
+
   /**
    * Show popup user info
-   * @param {click event} event 
+   * @param {click event} event
    */
   function userInfoContainerClick(event) {
     var isSelected = false;
@@ -720,7 +948,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   /**
    * click outside to hide popup user info
-   * @param {click event} event 
+   * @param {click event} event
    */
   function clickOutsideToClosePopupProfile(event) {
     var userInfoPopup = document.querySelectorAll('.header-nav-ui .primary-nav .user-info-popup')[0];
@@ -729,10 +957,10 @@ document.addEventListener("DOMContentLoaded", function() {
       removeClass(document.querySelectorAll('.user-info-container'), "isUserPopupOpen");
     }
   }
-  
+
   /**
    * more button click
-   * @param {click event} event 
+   * @param {click event} event
    */
   function moreButtonClick(event) {
     var moreBtnClicked = null;
@@ -772,7 +1000,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   /**
    * click outside to hide more popup
-   * @param {click event} event 
+   * @param {click event} event
    */
   function clickOutsideToClosePopupMore(event) {
     iterateElement(document.querySelectorAll('.more-content-container'), function(userInfoPopup) {
@@ -794,7 +1022,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   /**
    * move secondary arrow animation
-   * @param {boolean} withAnimation 
+   * @param {boolean} withAnimation
    */
   function adjustSelectionSecondaryNavPosition(withAnimation) {
     if (withAnimation) {
@@ -827,7 +1055,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   /**
    * move primary arrow animation
-   * @param {boolean} withAnimation 
+   * @param {boolean} withAnimation
    */
   function adjustSelectionPrimaryNavPosition(withAnimation) {
     if (withAnimation) {
@@ -860,8 +1088,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
   /**
    * check to shrink menu if it too long
-   * @param {HTMLElement} el 
-   * @param {string} linkClass 
+   * @param {HTMLElement} el
+   * @param {string} linkClass
    */
   function checkToShrinkElement(el, linkClass) {
     if (!el) {
@@ -910,8 +1138,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
   /**
    * check to expand menu if it have enough space
-   * @param {HTMLElement} el 
-   * @param {string} linkClass 
+   * @param {HTMLElement} el
+   * @param {string} linkClass
    */
   function expandElement(el, linkClass) {
     var children = getTheClosestChild(el);
@@ -970,7 +1198,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
       removeClass(headerNavUi, 'isOpenSecondaryNavMobile');
       removeClass(mobileNavSubMenu, 'isOpen');
-        
+
         // if mobile to desktop, if MORE navigation is selected, we need remove the arrow and fix the logo position
         if (hasClass(mobileMoreMenu, 'isOpen')){
           $(iconChooseArrow).css("display", "none");
@@ -1017,16 +1245,17 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // handle event window resize
   window.addEventListener("resize", function(){
+    console.log("resize")
     checkForShrinkMore();
   });
-  
+
   checkForShrinkMore();
   setTimeout(function () {
     checkForShrinkMore();
     adjustSelectionPrimaryNavPosition(false);
     adjustSelectionSecondaryNavPosition(false);
   }, 100);
-  
+
   headerNavUi.querySelectorAll('.mobile-nav .menu-btn')[0].addEventListener('click', function (event) {
     event.preventDefault();
     removeClass(mobileNavSubMenu, 'isOpen');
@@ -1036,32 +1265,39 @@ document.addEventListener("DOMContentLoaded", function() {
       addClass(arrowSelectedPrimaryAnimation, 'isAnimation');
     }, 100);
   }, false);
-  
+
   headerNavUi.querySelectorAll('.mobile-nav .close-btn')[0].addEventListener('click', function (event) {
     event.preventDefault();
     removeClass(headerNavUi, 'isOpenSecondaryNavMobile');
   }, false);
-  
+
   mobileNavSubMenu.getElementsByClassName('header')[0].addEventListener('click', function (event) {
     event.preventDefault();
     toggleClass(mobileNavSubMenu, 'isOpen');
   }, false);
 
   // handle click event
-  document.addEventListener('click', function (event) {
-    subLevel1Click(event);
-    subLevel2Click(event);
-    subLevel2MoreClick(event);
-    subLevel2MobileClick(event);
-    loginButtonClick(event);
-    logoutButtonClick(event);
-    secondaryLevel1Click(event);
-    mobileNavSubMenuItemClick(event);
-    secondaryLevel1MoreClick(event);
-    userInfoContainerClick(event);
-    moreButtonClick(event);
-    switchBussinessWork(event)
-  }, false);
+  ['click', 'touchend'].forEach((handle) => {
+    document.addEventListener(handle, function (event) {
+      subLevel1Click(event);
+      subLevel2Click(event);
+      subLevel2MoreClick(event);
+      subLevel2MobileClick(event);
+      loginButtonClick(event);
+      logoutButtonClick(event);
+      notificationsButtonClick(event);
+      notificationsMobileButtonClick(event);
+      notificationsMobileBackClick(event);
+      secondaryLevel1Click(event);
+      mobileNavSubMenuItemClick(event);
+      secondaryLevel1MoreClick(event);
+      userInfoContainerClick(event);
+      notificationsInfoContainerClick(event);
+      moreButtonClick(event);
+      switchBussinessWork(event)
+    }, false);
+  })
+  
 
   /**
    * resize the navigation menu (if needed) when hovering avatar
@@ -1088,7 +1324,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 /**
   * On Home Icon click
-  * @param {click event} event 
+  * @param {click event} event
   */
 function homeClick(event) {
   var target = event.target;
