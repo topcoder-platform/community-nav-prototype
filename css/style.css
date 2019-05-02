@@ -519,6 +519,7 @@ body {
             display: block; }
         .header-nav-ui .notifications-panel .noti-body .items .item-content,
         .header-nav-ui .mobile-notifications-panel .noti-body .items .item-content {
+          display: block;
           padding: 4px;
           border-bottom: 1px solid #E0E0E0;
           position: relative; }
