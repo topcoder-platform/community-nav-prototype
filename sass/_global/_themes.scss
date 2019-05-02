@@ -31,6 +31,7 @@ $themes: (
     secondaryMorePopupTextColor: $gray-90,
     iconDarkDisplay: none,
     iconLightDisplay: block,
+    arrowBackground: $gray-neutral-light,
   ),
   dark: (
     secondaryBackgroundColor: $gray-60,
@@ -40,5 +41,6 @@ $themes: (
     secondaryMorePopupTextColor: $white,
     iconDarkDisplay: block,
     iconLightDisplay: none,
+    arrowBackground: $gray-60,
   ),
 );
