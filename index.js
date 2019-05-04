@@ -6,6 +6,7 @@ app.use(express.static(path.join(__dirname, '/')))
 
 app.use('/dark', (req, res) => res.sendFile(path.join(__dirname, '/index-dark.html')))
 app.use('/light', (req, res) => res.sendFile(path.join(__dirname, '/index-light.html')))
+app.use('/settings', (req, res) => res.sendFile(path.join(__dirname, '/settings.html')))
 
 app.use('*', (req, res) => res.redirect('/light'))
 
