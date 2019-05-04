@@ -52,7 +52,7 @@
   }
 }
 
-/* .btn-black */
+/* .btn-blue */
 .btn-blue,
 .btn-blue:hover,
 .btn-blue:focus {
@@ -77,4 +77,23 @@
   &[disabled] {
     pointer-events: none;
   }
+}
+
+/* .btn-gray */
+.btn-gray,
+.btn-gray:hover,
+.btn-gray:focus {
+  cursor: pointer;
+  height: 30px;
+  color: $white;
+  line-height: 30px;
+  border-radius: 4px;
+  padding: 1px 18px;
+  font-size: 13px;
+  background-color: #AAAAAB;
+  @include Roboto-Regular;
+}
+
+.btn-gray:hover {
+  opacity: 0.75;
 }
