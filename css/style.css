@@ -322,7 +322,7 @@ body {
           background-color: rgba(85, 85, 85, 0.4);
           border-radius: 50%; }
         .header-nav-ui .primary-nav .primary-level-1.login-container .notification-popup.isNotificationsPopupOpen .notifications-panel {
-          display: block; }
+          display: flex; }
         .header-nav-ui .primary-nav .primary-level-1.login-container .notification-popup .no-notification .notification-icon {
           opacity: 0.5; }
           .header-nav-ui .primary-nav .primary-level-1.login-container .notification-popup .no-notification .notification-icon::after {
@@ -624,6 +624,12 @@ body {
       position: relative;
       z-index: 10;
       margin-top: -3px; }
+  .header-nav-ui .notifications-panel {
+    max-height: 70vh;
+    flex-direction: column; }
+    .header-nav-ui .notifications-panel .noti-body {
+      flex: 1;
+      max-height: none; }
   .header-nav-ui .icon-chosen-arrow {
     position: absolute;
     display: none;
