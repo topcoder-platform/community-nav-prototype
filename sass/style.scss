@@ -273,19 +273,24 @@ body {
         .notification-popup {
           .notification-icon {
             position: relative;
+            padding: 10px;
             &::after {
               content: "";
               width: 6px;
               height: 6px;
               position: absolute;
-              top: -4px;
-              right: -4px;
+              top: 8px;
+              right: 5px;
               background: $red;
               border-radius: 6px;
               display: block;
             }
           }
           &.isNotificationsPopupOpen {
+            .new-notification {
+              background-color: $gray-hover-profile-icon;
+              border-radius: 50%;
+            }
             .notifications-panel {
               display: block;
             }
@@ -300,6 +305,11 @@ body {
           }
           .new-notification {
             .notification-icon {
+            }
+
+            &:hover {
+              background-color: $gray-hover-profile-icon;
+              border-radius: 50%;
             }
           }
           .all-seen-notification {
