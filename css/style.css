@@ -288,23 +288,32 @@ body {
               width: calc(100% - 40px);
               align-self: center; }
         .header-nav-ui .primary-nav .primary-level-1.login-container .notification-popup .notification-icon {
-          position: relative; }
+          position: relative;
+          padding: 10px; }
           .header-nav-ui .primary-nav .primary-level-1.login-container .notification-popup .notification-icon::after {
             content: "";
             width: 6px;
             height: 6px;
             position: absolute;
-            top: -4px;
-            right: -4px;
+            top: 8px;
+            right: 5px;
             background: #EF476F;
             border-radius: 6px;
             display: block; }
+        .header-nav-ui .primary-nav .primary-level-1.login-container .notification-popup.isNotificationsPopupOpen .new-notification {
+          background-color: rgba(85, 85, 85, 0.4);
+          border-radius: 50%; }
         .header-nav-ui .primary-nav .primary-level-1.login-container .notification-popup.isNotificationsPopupOpen .notifications-panel {
           display: block; }
         .header-nav-ui .primary-nav .primary-level-1.login-container .notification-popup .no-notification .notification-icon {
           opacity: 0.5; }
           .header-nav-ui .primary-nav .primary-level-1.login-container .notification-popup .no-notification .notification-icon::after {
             display: none; }
+        .header-nav-ui .primary-nav .primary-level-1.login-container .notification-popup .new-notification {
+          line-height: 36px; }
+          .header-nav-ui .primary-nav .primary-level-1.login-container .notification-popup .new-notification:hover {
+            background-color: rgba(85, 85, 85, 0.4);
+            border-radius: 50%; }
         .header-nav-ui .primary-nav .primary-level-1.login-container .notification-popup .all-seen-notification .notification-icon::after {
           display: none; }
         .header-nav-ui .primary-nav .primary-level-1.login-container .notification-popup .dropdown-notification {
