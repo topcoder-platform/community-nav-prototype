@@ -405,7 +405,7 @@ body {
       .left-noti {
         background: url(../image/icon-bell.svg) left center no-repeat;
         background-size: 16px;
-        padding-left: 28px;
+        padding-left: 26px;
         color: $white;
         font-size: 16px;
         @include Roboto-Bold;
@@ -431,7 +431,6 @@ body {
           border-radius: 100%;
           display: inline-block;
           vertical-align: middle;
-          margin: auto 3px;
         }
       }
     }
@@ -553,7 +552,7 @@ body {
         }
       }
       .items {
-        padding: 0 20px;
+        padding: 0 30px;
         &:hover {
           background-color: $gray-neutral-light;
           .right-remove {
@@ -562,7 +561,7 @@ body {
         }
         .item-content {
           display: block;
-          padding: 4px;
+          padding: 10px 0;
           border-bottom: 1px solid $gray-02;
           position: relative;
           .txt {
@@ -570,7 +569,9 @@ body {
           }
         }
         .bottom-info {
-          margin-top: 6px;
+          margin-top: 5px;
+          line-height: 20px;
+          font-size: 12px;
           .blue-squre {
             padding: 0px 10px;
             display: inline-block;
@@ -578,7 +579,6 @@ body {
             background-color: $blue-btn;
             border-radius: 5px;
             color: $white;
-            font-size: 12px;
             @include Roboto-Regular;
             line-height: 20px;
           }
@@ -600,9 +600,9 @@ body {
         z-index: 1;
         position: relative;
         .copyicon-title {
-          padding-left: 30px;
+          padding-left: 26px;
           background: url(../image/group.svg) left center no-repeat;
-          background-size: 14px;
+          background-size: 15px;
           color: $gray-90;
           font-size: 14px;
           @include Roboto-Bold;
