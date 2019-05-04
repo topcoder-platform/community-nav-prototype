@@ -292,7 +292,7 @@ body {
               border-radius: 50%;
             }
             .notifications-panel {
-              display: block;
+              display: flex;
             }
           }
           .no-notification {
@@ -639,6 +639,16 @@ body {
       position: relative;
       z-index: 10;
       margin-top: -3px;
+    }
+  }
+
+  .notifications-panel {
+    max-height: 70vh;
+    flex-direction: column;
+
+    .noti-body {
+      flex: 1;
+      max-height: none;
     }
   }
 
