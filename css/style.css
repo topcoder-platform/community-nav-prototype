@@ -393,7 +393,7 @@ body {
       .header-nav-ui .mobile-notifications-panel .noti-header .left-noti {
         background: url(../image/icon-bell.svg) left center no-repeat;
         background-size: 16px;
-        padding-left: 28px;
+        padding-left: 26px;
         color: #FFFFFF;
         font-size: 16px;
         font-family: 'Roboto';
@@ -418,8 +418,7 @@ body {
         background-color: #FFFFFF;
         border-radius: 100%;
         display: inline-block;
-        vertical-align: middle;
-        margin: auto 3px; }
+        vertical-align: middle; }
     .header-nav-ui .notifications-panel .noti-body,
     .header-nav-ui .mobile-notifications-panel .noti-body {
       max-height: 378px;
@@ -537,7 +536,7 @@ body {
           display: block; }
       .header-nav-ui .notifications-panel .noti-body .items,
       .header-nav-ui .mobile-notifications-panel .noti-body .items {
-        padding: 0 20px; }
+        padding: 0 30px; }
         .header-nav-ui .notifications-panel .noti-body .items:hover,
         .header-nav-ui .mobile-notifications-panel .noti-body .items:hover {
           background-color: #FBFBFB; }
@@ -547,7 +546,7 @@ body {
         .header-nav-ui .notifications-panel .noti-body .items .item-content,
         .header-nav-ui .mobile-notifications-panel .noti-body .items .item-content {
           display: block;
-          padding: 4px;
+          padding: 10px 0;
           border-bottom: 1px solid #E0E0E0;
           position: relative; }
           .header-nav-ui .notifications-panel .noti-body .items .item-content .txt,
@@ -555,7 +554,9 @@ body {
             padding-right: 30px; }
         .header-nav-ui .notifications-panel .noti-body .items .bottom-info,
         .header-nav-ui .mobile-notifications-panel .noti-body .items .bottom-info {
-          margin-top: 6px; }
+          margin-top: 5px;
+          line-height: 20px;
+          font-size: 12px; }
           .header-nav-ui .notifications-panel .noti-body .items .bottom-info .blue-squre,
           .header-nav-ui .mobile-notifications-panel .noti-body .items .bottom-info .blue-squre {
             padding: 0px 10px;
@@ -564,7 +565,6 @@ body {
             background-color: #50ADE8;
             border-radius: 5px;
             color: #FFFFFF;
-            font-size: 12px;
             font-family: 'Roboto';
             font-weight: 400;
             line-height: 20px; }
@@ -587,9 +587,9 @@ body {
         position: relative; }
         .header-nav-ui .notifications-panel .noti-body .grey-bar .copyicon-title,
         .header-nav-ui .mobile-notifications-panel .noti-body .grey-bar .copyicon-title {
-          padding-left: 30px;
+          padding-left: 26px;
           background: url(../image/group.svg) left center no-repeat;
-          background-size: 14px;
+          background-size: 15px;
           color: #2A2A2B;
           font-size: 14px;
           font-family: 'Roboto';
