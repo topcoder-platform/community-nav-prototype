@@ -85,7 +85,7 @@
     box-shadow: none;
     outline: 0; }
 
-/* .btn-black */
+/* .btn-blue */
 .btn-blue,
 .btn-blue:hover,
 .btn-blue:focus {
@@ -106,6 +106,24 @@
   background-color: #2C95D7; }
   .btn-blue.disabled, .btn-blue:disabled, .btn-blue[disabled] {
     pointer-events: none; }
+
+/* .btn-gray */
+.btn-gray,
+.btn-gray:hover,
+.btn-gray:focus {
+  cursor: pointer;
+  height: 30px;
+  color: #FFFFFF;
+  line-height: 30px;
+  border-radius: 4px;
+  padding: 1px 18px;
+  font-size: 13px;
+  background-color: #AAAAAB;
+  font-family: 'Roboto';
+  font-weight: 400; }
+
+.btn-gray:hover {
+  opacity: 0.75; }
 
 /* colors */
 /* Grayscale colors. */
@@ -909,6 +927,272 @@ body {
           background-size: 10px;
           width: 10px;
           height: 16px; }
+  .header-nav-ui .settings-nav {
+    background: #2A2A2B;
+    color: #FFFFFF;
+    height: 60px;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; }
+    .header-nav-ui .settings-nav .tc-logo {
+      margin: 0 30px;
+      justify-self: flex-start;
+      cursor: pointer; }
+    .header-nav-ui .settings-nav a,
+    .header-nav-ui .settings-nav .title {
+      color: #EDEDF2;
+      font-size: 20px; }
+    .header-nav-ui .settings-nav .close-btn {
+      background-color: #808080;
+      border-radius: 29px;
+      width: 30px;
+      height: 30px;
+      margin-right: 25px; }
+      .header-nav-ui .settings-nav .close-btn img {
+        transform: scale(0.9); }
+
+.settings-panel {
+  background-color: #FFFFFF;
+  border-radius: 6px;
+  box-shadow: 0 1px 1px 0 #D5D5D5;
+  width: 720px;
+  margin: 26px auto 26px auto;
+  font-family: 'Roboto';
+  font-weight: 400;
+  padding: 30px 20px; }
+  .settings-panel .title {
+    color: #151516;
+    font-size: 28px;
+    font-weight: 300;
+    line-height: 35px;
+    text-align: center;
+    margin-bottom: 20px; }
+  .settings-panel .panel-content {
+    margin-bottom: 60px; }
+    .settings-panel .panel-content .section-title {
+      background-color: #EBEBEB;
+      border-radius: 4px 4px 0 0;
+      height: 50px;
+      padding: 0 10px;
+      display: flex;
+      align-items: center; }
+      .settings-panel .panel-content .section-title .left {
+        color: #151516;
+        font-family: 'Roboto';
+        font-weight: 700;
+        font-size: 15px;
+        line-height: 30px;
+        flex: 0 0 63%; }
+      .settings-panel .panel-content .section-title div {
+        color: #151516;
+        font-family: 'Roboto';
+        font-weight: 400;
+        font-size: 13px;
+        line-height: 35px; }
+        .settings-panel .panel-content .section-title div.website {
+          flex: 0 0 15%;
+          display: flex;
+          justify-content: center; }
+          .settings-panel .panel-content .section-title div.website span {
+            background: url(../image/bell-black.svg) left center no-repeat;
+            background-size: 17px;
+            padding-left: 22px; }
+            .settings-panel .panel-content .section-title div.website span em {
+              font-style: normal; }
+        .settings-panel .panel-content .section-title div.as-email {
+          flex: 0 0 22%;
+          display: flex;
+          justify-content: center; }
+          .settings-panel .panel-content .section-title div.as-email span {
+            background: url(../image/icon-email.svg) left center no-repeat;
+            background-size: 17px;
+            padding-left: 22px; }
+            .settings-panel .panel-content .section-title div.as-email span em {
+              font-style: normal; }
+    .settings-panel .panel-content .section-list {
+      padding-left: 0;
+      margin-top: 0; }
+      .settings-panel .panel-content .section-list li {
+        min-height: 50px;
+        padding: 0 10px;
+        box-shadow: 0 1px 0 0 #E0E0E0;
+        padding-bottom: 10px;
+        padding-top: 10px;
+        display: block; }
+        .settings-panel .panel-content .section-list li:hover {
+          background-color: #FAFAFB; }
+        .settings-panel .panel-content .section-list li .list-item {
+          display: flex;
+          align-items: center; }
+          .settings-panel .panel-content .section-list li .list-item .left {
+            flex: 0 0 63%; }
+            .settings-panel .panel-content .section-list li .list-item .left .title {
+              color: #151516;
+              font-family: 'Roboto';
+              font-weight: 400;
+              font-size: 15px;
+              line-height: 30px;
+              text-align: left;
+              margin-bottom: auto; }
+            .settings-panel .panel-content .section-list li .list-item .left .description {
+              color: #808080;
+              font-family: 'Roboto';
+              font-weight: 400;
+              font-size: 12px;
+              line-height: 20px;
+              margin-right: 40px; }
+          .settings-panel .panel-content .section-list li .list-item div {
+            color: #151516;
+            font-family: 'Roboto';
+            font-weight: 400;
+            font-size: 13px;
+            line-height: 30px; }
+            .settings-panel .panel-content .section-list li .list-item div.website {
+              flex: 0 0 15%;
+              display: flex;
+              justify-content: center;
+              margin-top: 12px; }
+              .settings-panel .panel-content .section-list li .list-item div.website .check-icon {
+                background: url(../image/e-remove.svg) left center no-repeat;
+                background-size: 7px;
+                width: 12px;
+                height: 7px;
+                cursor: pointer; }
+                .settings-panel .panel-content .section-list li .list-item div.website .check-icon.checked {
+                  background: url(../image/flat-icon-checked.svg) left center no-repeat;
+                  background-size: 10px;
+                  width: 9px;
+                  height: 7px;
+                  margin-left: -5px; }
+            .settings-panel .panel-content .section-list li .list-item div.as-email {
+              flex: 0 0 22%;
+              display: flex;
+              justify-content: center;
+              margin-top: 12px; }
+              .settings-panel .panel-content .section-list li .list-item div.as-email .check-icon {
+                background: url(../image/e-remove.svg) left center no-repeat;
+                background-size: 7px;
+                width: 12px;
+                height: 10px; }
+                .settings-panel .panel-content .section-list li .list-item div.as-email .check-icon.checked {
+                  background: url(../image/flat-icon-checked.svg) left center no-repeat;
+                  background-size: 10px;
+                  width: 9px;
+                  height: 7px;
+                  cursor: pointer;
+                  margin-left: -5px; }
+              .settings-panel .panel-content .section-list li .list-item div.as-email .dropdown-box {
+                background-color: #C0C0C0;
+                border-radius: 15px;
+                width: 148px;
+                height: 30px;
+                position: relative;
+                cursor: pointer; }
+                .settings-panel .panel-content .section-list li .list-item div.as-email .dropdown-box.open {
+                  background-color: #AAAAAB;
+                  box-shadow: inset 0 1px 3px 0 #808080; }
+                  .settings-panel .panel-content .section-list li .list-item div.as-email .dropdown-box.open .options {
+                    display: block; }
+                .settings-panel .panel-content .section-list li .list-item div.as-email .dropdown-box:hover {
+                  background-color: none;
+                  background-image: linear-gradient(180deg, #C0C0C0 0%, #A8A8A9 100%); }
+                .settings-panel .panel-content .section-list li .list-item div.as-email .dropdown-box.checked {
+                  background-color: #0681FF; }
+                  .settings-panel .panel-content .section-list li .list-item div.as-email .dropdown-box.checked.open {
+                    background-color: #006DEA;
+                    box-shadow: inset 0 1px 3px 0 #404041; }
+                  .settings-panel .panel-content .section-list li .list-item div.as-email .dropdown-box.checked:hover {
+                    background-color: none;
+                    background-image: linear-gradient(180deg, #0681FF 0%, #006CE7 100%);
+                    box-shadow: inset 0 0 3px 0 rgba(0, 0, 0, 0.5); }
+                .settings-panel .panel-content .section-list li .list-item div.as-email .dropdown-box .selected-label {
+                  color: #FFFFFF;
+                  font-family: 'Roboto';
+                  font-weight: 700;
+                  font-size: 13px;
+                  line-height: 30px;
+                  margin-left: 17px;
+                  cursor: pointer; }
+                  .settings-panel .panel-content .section-list li .list-item div.as-email .dropdown-box .selected-label .dropdown-arrow {
+                    background: url(../image/flat-icon-opposite-arrows.svg) left center no-repeat;
+                    background-size: 14px;
+                    width: 14px;
+                    height: 14px;
+                    display: block;
+                    position: absolute;
+                    right: 13px;
+                    top: 9px;
+                    transform: rotateZ(90deg); }
+                .settings-panel .panel-content .section-list li .list-item div.as-email .dropdown-box .options {
+                  display: none;
+                  background-color: #FFFFFF;
+                  border-radius: 6px;
+                  box-shadow: 0 5px 35px 5px rgba(21, 21, 22, 0.1), 0 10px 14px 0 rgba(21, 21, 22, 0.3);
+                  padding: 5px 5px;
+                  position: absolute;
+                  width: 138px;
+                  z-index: 100; }
+                  .settings-panel .panel-content .section-list li .list-item div.as-email .dropdown-box .options li {
+                    color: #151516;
+                    font-family: 'Roboto';
+                    font-weight: 400;
+                    font-size: 13px;
+                    line-height: 30px;
+                    padding-top: 0;
+                    min-height: initial;
+                    padding-bottom: initial;
+                    box-shadow: none;
+                    align-items: start;
+                    cursor: pointer; }
+                    .settings-panel .panel-content .section-list li .list-item div.as-email .dropdown-box .options li.active {
+                      font-weight: 700;
+                      background-color: #FAFAFB; }
+                    .settings-panel .panel-content .section-list li .list-item div.as-email .dropdown-box .options li:hover {
+                      background-color: #F4F9FF; }
+              .settings-panel .panel-content .section-list li .list-item div.as-email .switch-box {
+                background-color: #C0C0C0;
+                border-radius: 14px;
+                box-shadow: inset 0 1px 2px 0 rgba(0, 0, 0, 0.15);
+                width: 48px;
+                height: 25px;
+                display: flex;
+                justify-content: space-between;
+                cursor: pointer; }
+                .settings-panel .panel-content .section-list li .list-item div.as-email .switch-box:hover {
+                  opacity: 0.75; }
+                .settings-panel .panel-content .section-list li .list-item div.as-email .switch-box .label-on,
+                .settings-panel .panel-content .section-list li .list-item div.as-email .switch-box .label-off {
+                  color: #FAFAFB;
+                  font-family: 'Roboto';
+                  font-weight: 400;
+                  font-size: 12px;
+                  line-height: 14px;
+                  line-height: 26px; }
+                .settings-panel .panel-content .section-list li .list-item div.as-email .switch-box .label-on {
+                  margin-left: 7px;
+                  display: none; }
+                .settings-panel .panel-content .section-list li .list-item div.as-email .switch-box .label-off {
+                  margin-right: 7px; }
+                .settings-panel .panel-content .section-list li .list-item div.as-email .switch-box .dot {
+                  background-color: #FFFFFF;
+                  border-radius: 100%;
+                  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.35);
+                  width: 17px;
+                  height: 17px;
+                  margin-top: 4px;
+                  margin-left: 4px;
+                  margin-right: 4px; }
+                .settings-panel .panel-content .section-list li .list-item div.as-email .switch-box.checked {
+                  background-color: #0681FF; }
+                  .settings-panel .panel-content .section-list li .list-item div.as-email .switch-box.checked .label-on {
+                    display: block; }
+                  .settings-panel .panel-content .section-list li .list-item div.as-email .switch-box.checked .label-off {
+                    display: none; }
+        .settings-panel .panel-content .section-list li .description-mobile {
+          display: none; }
+  .settings-panel .bottom-btn {
+    text-align: center; }
 
 @media (max-width: 900px) {
   .header-nav-ui .primary-nav .primary-level-1 {
@@ -924,7 +1208,9 @@ body {
   .header-nav-ui .secondary-nav a {
     margin: 0 10px; }
   .header-nav-ui .more-btn-container .more-btn {
-    margin-left: 10px !important; } }
+    margin-left: 10px !important; }
+  .header-nav-ui .settings-nav .close-btn {
+    background-color: initial; } }
 
 @media (max-width: 768px) {
   .header-nav-ui .user-info-popup,
@@ -1031,6 +1317,63 @@ body {
     display: flex; }
   .header-nav-ui.isOpenSecondaryNavMobile .mobile-nav-sub-menu {
     display: none; }
+  .settings-panel {
+    margin-top: 0;
+    margin-bottom: 0;
+    border-radius: 0;
+    width: 100%;
+    padding: 12px 0 32px 0; }
+    .settings-panel > .title {
+      display: none; }
+    .settings-panel .panel-content .section-title .left {
+      flex: 0 0 45%; }
+    .settings-panel .panel-content .section-title div.website {
+      flex: 0 0 10%; }
+      .settings-panel .panel-content .section-title div.website span {
+        padding-left: 0;
+        width: 22px;
+        height: 22px; }
+        .settings-panel .panel-content .section-title div.website span em {
+          display: none; }
+    .settings-panel .panel-content .section-title div.as-email {
+      flex: 0 0 45%; }
+      .settings-panel .panel-content .section-title div.as-email span {
+        padding-left: 0;
+        width: 22px;
+        height: 22px; }
+        .settings-panel .panel-content .section-title div.as-email span em {
+          display: none; }
+    .settings-panel .panel-content .section-list {
+      padding-left: 0; }
+      .settings-panel .panel-content .section-list li .list-item .left {
+        flex: 0 0 45%;
+        align-self: flex-start;
+        padding-top: 5px; }
+        .settings-panel .panel-content .section-list li .list-item .left .title {
+          line-height: 20px; }
+        .settings-panel .panel-content .section-list li .list-item .left .description {
+          display: none; }
+      .settings-panel .panel-content .section-list li .list-item div.website {
+        flex: 0 0 10%;
+        align-self: flex-start; }
+      .settings-panel .panel-content .section-list li .list-item div.as-email {
+        flex: 0 0 45%;
+        align-self: flex-start;
+        margin-top: 0; }
+        .settings-panel .panel-content .section-list li .list-item div.as-email .check-icon {
+          margin-top: 12px; }
+          .settings-panel .panel-content .section-list li .list-item div.as-email .check-icon.checked {
+            margin-top: 13px; }
+        .settings-panel .panel-content .section-list li .list-item div.as-email .switch-box {
+          margin-top: 2px; }
+      .settings-panel .panel-content .section-list li .description-mobile {
+        display: block;
+        color: #808080;
+        font-family: 'Roboto';
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 20px;
+        margin-top: 10px; }
   .mobile-hide {
     display: none; }
   .mobile-show {
