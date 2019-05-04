@@ -66,7 +66,7 @@ body {
         * {
           z-index: 1;
         }
-        
+
         .mask {
           background-color: $gray-70;
           border-radius: 15px;
@@ -89,6 +89,7 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
+    z-index: 1;
 
     a {
       color: $white;
@@ -116,10 +117,10 @@ body {
       &.more-menu {
         display: none;
       }
-      
+
       &.isOpen {
         color: $turquoise;
-        justify-self:flex-start;
+        justify-self: flex-start;
 
         &.isOpenSubmenu {
           color: $white;
@@ -168,19 +169,19 @@ body {
           &:hover,
           &.isUserPopupOpen {
             background-color: $gray-hover-profile-icon;
-            
+
             .handle-container .handle {
               display: block;
             }
           }
 
           &.isUserPopupOpen .handle-container {
-            
+
             .dropdown-icon {
               transform: rotate(180deg);
             }
-          }          
-          
+          }
+
           .avatar {
             width: 30px;
             height: 30px;
@@ -264,27 +265,32 @@ body {
               margin: 10px;
               height: 1px;
               width: calc(100% - 40px);
-              align-self: center;          
+              align-self: center;
             }
           }
         }
-        
+
         .notification-popup {
           .notification-icon {
             position: relative;
+            padding: 10px;
             &::after {
               content: "";
               width: 6px;
               height: 6px;
               position: absolute;
-              top: -4px;
-              right: -4px;
+              top: 8px;
+              right: 5px;
               background: $red;
               border-radius: 6px;
               display: block;
             }
           }
           &.isNotificationsPopupOpen {
+            .new-notification {
+              background-color: $gray-hover-profile-icon;
+              border-radius: 50%;
+            }
             .notifications-panel {
               display: block;
             }
@@ -298,7 +304,13 @@ body {
             }
           }
           .new-notification {
+            line-height: 36px;
             .notification-icon {
+            }
+
+            &:hover {
+              background-color: $gray-hover-profile-icon;
+              border-radius: 50%;
             }
           }
           .all-seen-notification {
@@ -369,11 +381,12 @@ body {
       }
     }
   }
-  
+
   .notifications-panel,
   .mobile-notifications-panel {
     background-color: $white;
     border-radius: 10px;
+    overflow: hidden;
     box-shadow: 0 5px 35px 5px rgba(21, 21, 22, 0.1), 0 10px 14px 0 rgba(21, 21, 22, 0.3);
     width: 480px;
     height: auto;
@@ -548,6 +561,7 @@ body {
           }
         }
         .item-content {
+          display: block;
           padding: 4px;
           border-bottom: 1px solid $gray-02;
           position: relative;
@@ -656,8 +670,10 @@ body {
       background: themed('secondaryBackgroundColor');
       color: themed('secondaryTextColor');
     }
-    
+
     font-size: 13px;
+    position: relative;
+    z-index: 0;
 
     a {
       @include themify($themes) {
@@ -702,7 +718,7 @@ body {
         @include themify($themes) {
           background: themed('secondaryMorePopupBackground');
         }
-        
+
         a {
           @include Roboto-Regular;
           @include themify($themes) {
@@ -721,7 +737,7 @@ body {
             display: themed('iconLightDisplay');
           }
         }
-    
+
         .icon-dark {
           @include themify($themes) {
             display: themed('iconDarkDisplay');
@@ -779,7 +795,7 @@ body {
         display: inline-block;
       }
     }
-    
+
     span {
       @include Roboto-Bold;
 
@@ -806,14 +822,14 @@ body {
     .header {
       background: $teal;
       height: 60px;
-  
+
       .drowdown-icon-container {
         margin-left: 8px;
       }
-      
+
       span {
         @include Barlow-Condensed-SemiBold;
-  
+
         color: $white;
         font-size: 28px;
         line-height: 40px;
@@ -837,7 +853,7 @@ body {
 
         &.isOpen {
           @include Roboto-Bold;
-          
+
           &::before {
             content: "";
             height: 30px;
@@ -866,7 +882,7 @@ body {
       .mask {
         display: flex;
       }
-  
+
       .drowdown-icon-container {
         @include transformVertical;
       }
@@ -901,7 +917,7 @@ body {
 
         &.isOpen {
           @include Roboto-Bold;
-          
+
           &::before {
             content: "";
             height: 30px;
@@ -982,7 +998,7 @@ body {
           font-size: 12;
         }
       }
-      
+
       .icon-close {
         width: 50px;
         height: 50px;
@@ -1420,7 +1436,7 @@ body {
     .user-info-popup,
     .login-container {
       display: none;
-    
+
       &.isOpen {
         display: flex;
       }
@@ -1457,7 +1473,7 @@ body {
         &.more-menu {
           display: flex;
         }
-      
+
         &.isOpen {
           &.isOpenSubmenu {
             color: $turquoise;
@@ -1465,7 +1481,7 @@ body {
         }
       }
     }
-    
+
     // notifications panel
     .mobile-notifications-panel {
       width: 100%;
@@ -1556,7 +1572,7 @@ body {
 
     .mobile-nav {
       display: flex;
- 
+
       .close-btn {
         display: none;
       }
@@ -1695,4 +1711,13 @@ body {
 
 .avatar {
   border-radius: 100%;
+}
+
+.opacity-0 {
+	opacity: 0;
+}
+
+.fade-opacity-in {
+	transition: opacity 400ms ease-in 100ms;
+	opacity: 1;
 }
