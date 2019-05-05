@@ -1174,7 +1174,10 @@ body {
                   font-weight: 400;
                   font-size: 12px;
                   line-height: 14px;
-                  line-height: 26px; }
+                  line-height: 26px;
+                  display: flex;
+                  justify-content: center;
+                  flex-direction: column; }
                 .settings-panel .panel-content .section-list li .list-item div.as-email .switch-box .label-on {
                   margin-left: 7px;
                   display: none; }
