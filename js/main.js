@@ -468,10 +468,10 @@ document.addEventListener("DOMContentLoaded", function() {
   var showEmpty = true;
   function notificationsMobileButtonClick(event) {
     var target = event.target;
-
-    if (!target || !hasClass(target, 'notification-right-arrow')) return;
-
-    if (!target || !hasClass(target, 'notification-mobile')) return;
+    
+    var userInfoPopup = document.querySelectorAll('.user-info-popup-mobile')[0];
+    var notificationLink = document.querySelectorAll('.user-info-popup-mobile .notification-mobile')[0];
+    if (isHidden(userInfoPopup) || !notificationLink.contains(target)) return;
     
     if (showEmpty) {
       removeClass(notificationPanelEmptyMobile, "hide");

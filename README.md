@@ -50,3 +50,7 @@ remove the "hide" class from one of the 4 lines,will show the different notifica
 ## Notification showcase in both Desktop and Mobile views
 Click on notification icon first time,will show the notification popup with Empty status,
 click it second time,will show the notification popup with Populated status.
+
+## How to get to Settings page
+In User Profile popup of both Desktop/Mobile browsers,
+click on "Settings" link can go to Settings page.
